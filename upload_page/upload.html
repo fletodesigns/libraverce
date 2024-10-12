@@ -2,40 +2,44 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="upload.css">
-  <title>Upload Book</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="upload.css">
+    <link rel="shortcut icon" href="/img/icon3.png" type="image/x-icon">
+    <title>Upload New Book - Libraverce</title>
 </head>
 
 <body>
-  <header>
-    <h1>Upload New Book</h1>
-  </header>
+    <header class="navbar">
+        <div class="logo">
+            <img src="/img/icon.png" alt="libraverce logo">
+            <p>Libraverce</p>
+        </div>
+    </header>
 
-  <main>
-    <form id="uploadForm">
-      <div class="form-group">
-        <label for="title">Book Title</label>
-        <input type="text" id="title" required>
-      </div>
-      <div class="form-group">
-        <label for="subtitle">Book Subtitle</label>
-        <input type="text" id="subtitle" required>
-      </div>
-      <div class="form-group">
-        <label for="coverImage">Cover Image URL</label>
-        <input type="text" id="coverImage" required>
-      </div>
-      <div class="form-group">
-        <label for="pdfUpload">Upload PDF</label>
-        <input type="file" id="pdfUpload" accept="application/pdf" required>
-      </div>
-      <button type="submit">Upload Book</button>
-    </form>
-  </main>
+    <main>
+        <h1>Upload New Book</h1>
+        <form id="uploadForm">
+            <label for="title">Book Title:</label>
+            <input type="text" id="title" name="title" required>
 
-  <script type="module" src="upload.js"></script>
+            <label for="subtitle">Subtitle:</label>
+            <input type="text" id="subtitle" name="subtitle">
+
+            <label for="coverImage">Book Cover Image:</label>
+            <input type="file" id="coverImage" accept="image/*" required>
+
+            <label for="pdfFile">PDF File:</label>
+            <input type="file" id="pdfFile" accept="application/pdf" required>
+
+            <button type="submit">Upload Book</button>
+        </form>
+
+        <p id="statusMessage"></p>
+    </main>
+
+    <!-- Firebase and custom JS script -->
+    <script type="module" src="upload.js"></script>
 </body>
 
 </html>
