@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="upload.css">
+  <title>Add New Book - Libraverce</title>
+</head>
+
+<body>
+
+  <h1>Add a New Book</h1>
+  
+  <form id="bookForm">
+    <label for="title">Book Title:</label>
+    <input type="text" id="title" name="title" required><br><br>
+
+    <label for="subtitle">Subtitle:</label>
+    <input type="text" id="subtitle" name="subtitle" required><br><br>
+
+    <label for="coverImage">Cover Image:</label>
+    <input type="file" id="coverImage" name="coverImage" accept="image/*" required><br><br>
+
+    <label for="readNowUrl">Read Now URL:</label>
+    <input type="url" id="readNowUrl" name="readNowUrl" required><br><br>
+
+    <label for="downloadUrl">Download URL:</label>
+    <input type="url" id="downloadUrl" name="downloadUrl" required><br><br>
+
+    <button type="submit">Add Book</button>
+  </form>
+
+  <script type="module" src="upload.js"></script>
+
+</body>
+
+</html>
