@@ -1,7 +1,6 @@
 // Import Firebase functions
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
 import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
-import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-storage.js";
 
 // Firebase configuration
 const firebaseConfig = {
@@ -17,7 +16,6 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-const storage = getStorage(app);
 
 // Handle form submission
 document.getElementById('bookForm').addEventListener('submit', async (e) => {
@@ -28,21 +26,14 @@ document.getElementById('bookForm').addEventListener('submit', async (e) => {
   const subtitle = document.getElementById('subtitle').value;
   const readNowUrl = document.getElementById('readNowUrl').value;
   const downloadUrl = document.getElementById('downloadUrl').value;
-  const coverImage = document.getElementById('coverImage').files[0]; // Get the file
+  const coverImageUrl = document.getElementById('coverImage').value; // URL input for cover image
 
   try {
-    // Upload cover image to Firebase Storage
-    const storageRef = ref(storage, 'bookCovers/' + coverImage.name);
-    await uploadBytes(storageRef, coverImage);
-
-    // Get the image URL from Firebase Storage
-    const imageUrl = await getDownloadURL(storageRef);
-
     // Save book details to Firestore
     await addDoc(collection(db, "books"), {
       title: title,
       subtitle: subtitle,
-      coverImage: imageUrl,
+      coverImage: coverImageUrl,
       readNowUrl: readNowUrl,
       downloadUrl: downloadUrl
     });
