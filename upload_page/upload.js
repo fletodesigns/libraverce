@@ -1,7 +1,7 @@
 // Import Firebase functions
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
-import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-storage.js";
 import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-storage.js";
 
 // Firebase configuration
 const firebaseConfig = {
@@ -16,53 +16,42 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const storage = getStorage(app);
 const db = getFirestore(app);
+const storage = getStorage(app);
 
 // Handle form submission
-document.getElementById('uploadForm').addEventListener('submit', async (e) => {
+document.getElementById('bookForm').addEventListener('submit', async (e) => {
   e.preventDefault();
-  console.log("Form submitted"); // For debugging
 
+  // Get form data
   const title = document.getElementById('title').value;
   const subtitle = document.getElementById('subtitle').value;
-  const coverImage = document.getElementById('coverImage').files[0];
-  const pdfFile = document.getElementById('pdfFile').files[0];
-  const statusMessage = document.getElementById('statusMessage');
-
-  if (!coverImage || !pdfFile) {
-    statusMessage.textContent = "Both cover image and PDF file are required.";
-    return;
-  }
-
-  console.log("Uploading cover image and PDF file..."); // Debugging
+  const readNowUrl = document.getElementById('readNowUrl').value;
+  const downloadUrl = document.getElementById('downloadUrl').value;
+  const coverImage = document.getElementById('coverImage').files[0]; // Get the file
 
   try {
     // Upload cover image to Firebase Storage
-    const coverImageRef = ref(storage, `covers/${coverImage.name}`);
-    await uploadBytes(coverImageRef, coverImage);
-    const coverImageUrl = await getDownloadURL(coverImageRef);
-    console.log("Cover image uploaded:", coverImageUrl); // Debugging
+    const storageRef = ref(storage, 'bookCovers/' + coverImage.name);
+    await uploadBytes(storageRef, coverImage);
 
-    // Upload PDF file to Firebase Storage
-    const pdfFileRef = ref(storage, `pdfs/${pdfFile.name}`);
-    await uploadBytes(pdfFileRef, pdfFile);
-    const pdfFileUrl = await getDownloadURL(pdfFileRef);
-    console.log("PDF file uploaded:", pdfFileUrl); // Debugging
+    // Get the image URL from Firebase Storage
+    const imageUrl = await getDownloadURL(storageRef);
 
     // Save book details to Firestore
-    await addDoc(collection(db, 'books'), {
+    await addDoc(collection(db, "books"), {
       title: title,
       subtitle: subtitle,
-      coverImage: coverImageUrl,
-      pdfUrl: pdfFileUrl
+      coverImage: imageUrl,
+      readNowUrl: readNowUrl,
+      downloadUrl: downloadUrl
     });
-    console.log("Book details saved to Firestore"); // Debugging
 
-    statusMessage.textContent = "Book uploaded successfully!";
-    document.getElementById('uploadForm').reset();
+    alert("Book added successfully!");
+    document.getElementById('bookForm').reset(); // Reset form after submission
+
   } catch (error) {
-    console.error('Error uploading book:', error); // Debugging
-    statusMessage.textContent = "Error uploading book. Please try again.";
+    console.error("Error adding book: ", error);
+    alert("Failed to add book. Please try again.");
   }
 });
