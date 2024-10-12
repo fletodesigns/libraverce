@@ -1,7 +1,7 @@
 // Import Firebase functions
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
-import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-storage.js";
+import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
 
 // Firebase configuration
 const firebaseConfig = {
@@ -16,8 +16,8 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
 const storage = getStorage(app);
+const db = getFirestore(app);
 
 // Handle form submission
 document.getElementById('uploadForm').addEventListener('submit', async (e) => {
@@ -25,31 +25,38 @@ document.getElementById('uploadForm').addEventListener('submit', async (e) => {
 
   const title = document.getElementById('title').value;
   const subtitle = document.getElementById('subtitle').value;
-  const coverImage = document.getElementById('coverImage').value;
-  const pdfFile = document.getElementById('pdfUpload').files[0];
+  const coverImage = document.getElementById('coverImage').files[0];
+  const pdfFile = document.getElementById('pdfFile').files[0];
+  const statusMessage = document.getElementById('statusMessage');
 
-  if (!pdfFile) {
-    alert('Please upload a PDF file.');
+  if (!coverImage || !pdfFile) {
+    statusMessage.textContent = "Both cover image and PDF file are required.";
     return;
   }
 
   try {
-    // Upload the PDF to Firebase Storage
-    const pdfRef = ref(storage, `pdfs/${title}/${pdfFile.name}`);
-    const snapshot = await uploadBytes(pdfRef, pdfFile);
-    const pdfUrl = await getDownloadURL(snapshot.ref);
+    // Upload cover image to Firebase Storage
+    const coverImageRef = ref(storage, `covers/${coverImage.name}`);
+    await uploadBytes(coverImageRef, coverImage);
+    const coverImageUrl = await getDownloadURL(coverImageRef);
 
-    // Add the book details along with the PDF URL to Firestore
+    // Upload PDF file to Firebase Storage
+    const pdfFileRef = ref(storage, `pdfs/${pdfFile.name}`);
+    await uploadBytes(pdfFileRef, pdfFile);
+    const pdfFileUrl = await getDownloadURL(pdfFileRef);
+
+    // Save book details to Firestore
     await addDoc(collection(db, 'books'), {
-      title,
-      subtitle,
-      coverImage,
-      pdfUrl
+      title: title,
+      subtitle: subtitle,
+      coverImage: coverImageUrl,
+      pdfUrl: pdfFileUrl
     });
 
-    alert('Book uploaded successfully!');
+    statusMessage.textContent = "Book uploaded successfully!";
+    document.getElementById('uploadForm').reset();
   } catch (error) {
     console.error('Error uploading book:', error);
-    alert('Failed to upload book. Please try again.');
+    statusMessage.textContent = "Error uploading book. Please try again.";
   }
 });
