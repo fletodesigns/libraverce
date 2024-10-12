@@ -20,38 +20,36 @@ const db = getFirestore(app);
 const storage = getStorage(app);
 
 // Handle form submission
-document.getElementById('bookForm').addEventListener('submit', async (e) => {
+document.getElementById('uploadForm').addEventListener('submit', async (e) => {
   e.preventDefault();
 
-  // Get form data
   const title = document.getElementById('title').value;
   const subtitle = document.getElementById('subtitle').value;
-  const readNowUrl = document.getElementById('readNowUrl').value;
-  const downloadUrl = document.getElementById('downloadUrl').value;
-  const coverImage = document.getElementById('coverImage').files[0]; // Get the file
+  const coverImage = document.getElementById('coverImage').value;
+  const pdfFile = document.getElementById('pdfUpload').files[0];
+
+  if (!pdfFile) {
+    alert('Please upload a PDF file.');
+    return;
+  }
 
   try {
-    // Upload cover image to Firebase Storage
-    const storageRef = ref(storage, 'bookCovers/' + coverImage.name);
-    await uploadBytes(storageRef, coverImage);
+    // Upload the PDF to Firebase Storage
+    const pdfRef = ref(storage, `pdfs/${title}/${pdfFile.name}`);
+    const snapshot = await uploadBytes(pdfRef, pdfFile);
+    const pdfUrl = await getDownloadURL(snapshot.ref);
 
-    // Get the image URL from Firebase Storage
-    const imageUrl = await getDownloadURL(storageRef);
-
-    // Save book details to Firestore
-    await addDoc(collection(db, "books"), {
-      title: title,
-      subtitle: subtitle,
-      coverImage: imageUrl,
-      readNowUrl: readNowUrl,
-      downloadUrl: downloadUrl
+    // Add the book details along with the PDF URL to Firestore
+    await addDoc(collection(db, 'books'), {
+      title,
+      subtitle,
+      coverImage,
+      pdfUrl
     });
 
-    alert("Book added successfully!");
-    document.getElementById('bookForm').reset(); // Reset form after submission
-
+    alert('Book uploaded successfully!');
   } catch (error) {
-    console.error("Error adding book: ", error);
-    alert("Failed to add book. Please try again.");
+    console.error('Error uploading book:', error);
+    alert('Failed to upload book. Please try again.');
   }
 });
