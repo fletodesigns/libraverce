@@ -17,68 +17,34 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-// Fetch books from Firestore and display them
-async function loadBooks() {
+// Fetch and display books from Firestore
+async function fetchBooks() {
+  const bookCollection = collection(db, "books");
+  const bookSnapshot = await getDocs(bookCollection);
+  const books = bookSnapshot.docs.map(doc => doc.data());
+
   const bookContainer = document.getElementById('bookContainer');
-  bookContainer.innerHTML = ''; // Clear the container
+  bookContainer.innerHTML = ''; // Clear the book container
 
-  try {
-    const querySnapshot = await getDocs(collection(db, 'books'));
-    querySnapshot.forEach((doc) => {
-      const book = doc.data();
-
-      // Create book card
-      const bookCard = document.createElement('div');
-      bookCard.classList.add('book-card');
-
-      // Set book cover
-      const coverDiv = document.createElement('div');
-      coverDiv.classList.add('cover');
-      const coverImg = document.createElement('img');
-      coverImg.src = book.coverImage;
-      coverImg.alt = `Book Cover for ${book.title}`;
-      coverDiv.appendChild(coverImg);
-
-      // Set book title and subtitle
-      const title = document.createElement('h2');
-      title.textContent = book.title;
-      const subtitle = document.createElement('h3');
-      subtitle.textContent = book.subtitle;
-
-      // Actions for "Read Now" and "Download"
-      const actionsDiv = document.createElement('div');
-      actionsDiv.classList.add('actions');
-
-      // Read Now button
-      const readNowButton = document.createElement('button');
-      readNowButton.classList.add('download-btn');
-      const readNowLink = document.createElement('a');
-      readNowLink.href = book.pdfUrl;
-      readNowLink.target = '_blank';
-      readNowLink.innerHTML = `<i class="fa-solid fa-book"></i> Read now`;
-      readNowButton.appendChild(readNowLink);
-
-      // Append actions
-      actionsDiv.appendChild(readNowButton);
-
-      // Append all elements to book card
-      bookCard.appendChild(coverDiv);
-      bookCard.appendChild(title);
-      bookCard.appendChild(subtitle);
-      bookCard.appendChild(actionsDiv);
-
-      // Append book card to container
-      bookContainer.appendChild(bookCard);
-    });
-  } catch (error) {
-    console.error('Error loading books:', error);
-  }
+  books.forEach(book => {
+    const bookCard = `
+      <div class="book-card">
+        <div class="cover">
+          <img src="${book.coverImage}" alt="Book Cover">
+        </div>
+        <h2>${book.title}</h2>
+        <h3>${book.subtitle}</h3>
+        <div class="actions">
+          <button class="download-btn"><i class="fa-solid fa-book"></i><a href="${book.readNowUrl}" target="_blank"> Read now</a></button>
+          <button class="favorite-btn"><a href="${book.downloadUrl}" target="_blank"><i class="fa-solid fa-download"></i></a></button>
+        </div>
+      </div>
+    `;
+    bookContainer.innerHTML += bookCard;
+  });
 }
 
-// Call loadBooks to display all books on page load
-loadBooks();
-
-// Search function to filter books
+// Search books
 function searchBooks() {
   const query = document.getElementById('searchBar').value.toLowerCase();
   const bookCards = document.querySelectorAll('.book-card');
@@ -95,5 +61,8 @@ function searchBooks() {
   });
 }
 
-// Attach searchBooks function to search input
+// Load books on page load
+window.onload = fetchBooks;
+
+// Search function connected to the search bar
 document.getElementById('searchBar').addEventListener('keyup', searchBooks);
