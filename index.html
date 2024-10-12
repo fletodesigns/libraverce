@@ -1,24 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-  <link rel="shortcut icon" href="/img/icon3.png" type="image/x-icon">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-  <title>Libraverce</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="/img/icon3.png" type="image/x-icon">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <title>Libraverce</title>
 </head>
-
 <body>
-  <!-- navbar -->
-  <header class="navbar">
+
+    <!-- navbar -->
+<header class="navbar">
     <div class="logo">
-      <img src="/img/icon.png" alt="libraverce logo">
-      <p>Libraverce</p>
+        <img src="/img/icon.png" alt="libraverce logo">
+        <p>Libraverce</p>
     </div>
     <div class="menu">
-      <!-- Search input -->
+        <!-- Search input -->
       <div class="group">
         <svg class="icon" aria-hidden="true" viewBox="0 0 24 24">
           <g>
@@ -27,21 +26,31 @@
         </svg>
         <input type="text" id="searchBar" class="search-bar" placeholder="Search books..." onkeyup="searchBooks()">
       </div>
-      <button>
-        <a href="/upload_page/upload.html"><i class="fa-solid fa-sliders"></i></a>
-      </button>
+        <button>
+            <i class="fa-solid fa-sliders"></i>
+        </button>
     </div>
-  </header>
+</header>
 
-  <!-- main body -->
-  <main>
+<!-- main body -->
+<main>
     <div class="book-container" id="bookContainer">
-      <!-- Books will be dynamically loaded here -->
+        <!-- Repeat this block for 10 book cards -->
+        <div class="book-card">
+            <div class="cover">
+                <img src="https://i.pinimg.com/564x/e3/48/83/e348831994111b27cd102cbcbbe5230d.jpg" alt="Book Cover">
+            </div>
+            <h2>നൂറ്റിയഞ്ചാം മുറിയിലെ പെൺകുട്ടി</h2>
+            <h3>nootiyanjam muriyile penkutti</h3>
+            <div class="actions">
+                <button class="download-btn"><i class="fa-solid fa-book"></i><a href="#" download> Read now</a></button>
+                <button class="favorite-btn"><i class="fa-solid fa-download"></i></button>
+            </div>
+        </div>
+        <!-- Add more book cards here -->
     </div>
-  </main>
+</main>
 
-  <!-- Firebase script and JS files -->
-  <script type="module" src="script.js"></script>
+<script src="/script.js"></script>
 </body>
-
 </html>
