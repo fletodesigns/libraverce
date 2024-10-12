@@ -22,6 +22,7 @@ const db = getFirestore(app);
 // Handle form submission
 document.getElementById('uploadForm').addEventListener('submit', async (e) => {
   e.preventDefault();
+  console.log("Form submitted"); // For debugging
 
   const title = document.getElementById('title').value;
   const subtitle = document.getElementById('subtitle').value;
@@ -34,16 +35,20 @@ document.getElementById('uploadForm').addEventListener('submit', async (e) => {
     return;
   }
 
+  console.log("Uploading cover image and PDF file..."); // Debugging
+
   try {
     // Upload cover image to Firebase Storage
     const coverImageRef = ref(storage, `covers/${coverImage.name}`);
     await uploadBytes(coverImageRef, coverImage);
     const coverImageUrl = await getDownloadURL(coverImageRef);
+    console.log("Cover image uploaded:", coverImageUrl); // Debugging
 
     // Upload PDF file to Firebase Storage
     const pdfFileRef = ref(storage, `pdfs/${pdfFile.name}`);
     await uploadBytes(pdfFileRef, pdfFile);
     const pdfFileUrl = await getDownloadURL(pdfFileRef);
+    console.log("PDF file uploaded:", pdfFileUrl); // Debugging
 
     // Save book details to Firestore
     await addDoc(collection(db, 'books'), {
@@ -52,11 +57,12 @@ document.getElementById('uploadForm').addEventListener('submit', async (e) => {
       coverImage: coverImageUrl,
       pdfUrl: pdfFileUrl
     });
+    console.log("Book details saved to Firestore"); // Debugging
 
     statusMessage.textContent = "Book uploaded successfully!";
     document.getElementById('uploadForm').reset();
   } catch (error) {
-    console.error('Error uploading book:', error);
+    console.error('Error uploading book:', error); // Debugging
     statusMessage.textContent = "Error uploading book. Please try again.";
   }
 });
