@@ -2,52 +2,46 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="shortcut icon" href="/img/icon3.png" type="image/x-icon">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <script type='text/javascript' src='//foresightcoercive.com/4e/97/8c/4e978c6a085335df6635e6764941ad6b.js'></script>
-    <title>Libraverce</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="shortcut icon" href="/img/icon3.png" type="image/x-icon">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <title>Libraverce</title>
 </head>
 
 <body>
-    <!-- navbar -->
-    <header class="navbar">
-        <div class="logo">
-            <img src="/img/icon.png" alt="libraverce logo">
-            <p>Libraverce</p>
-        </div>
-        <div class="menu">
-            <!-- Search input -->
-            <div class="group">
-                <svg class="icon" aria-hidden="true" viewBox="0 0 24 24">
-                    <g>
-                        <path
-                            d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z">
-                        </path>
-                    </g>
-                </svg>
-                <input type="text" id="searchBar" class="search-bar" placeholder="Search books..." onkeyup="searchBooks()">
-            </div>
-            <button>
-                <a href="/upload_page/upload.html"><i class="fa-solid fa-sliders"></i></a>
-            </button>
-        </div>
-    </header>
+  <!-- navbar -->
+  <header class="navbar">
+    <div class="logo">
+      <img src="/img/icon.png" alt="libraverce logo">
+      <p>Libraverce</p>
+    </div>
+    <div class="menu">
+      <!-- Search input -->
+      <div class="group">
+        <svg class="icon" aria-hidden="true" viewBox="0 0 24 24">
+          <g>
+            <path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"></path>
+          </g>
+        </svg>
+        <input type="text" id="searchBar" class="search-bar" placeholder="Search books..." onkeyup="searchBooks()">
+      </div>
+      <button>
+        <a href="/upload_page/upload.html"><i class="fa-solid fa-sliders"></i></a>
+      </button>
+    </div>
+  </header>
 
-    <!-- main body -->
-    <main>
-        <div class="book-container" id="bookContainer">
-            <!-- Books will be dynamically loaded here -->
-        </div>
-    </main>
-    <script async="async" data-cfasync="false" src="//foresightcoercive.com/d71ecab1003336d25c9d7f9f401f9d64/invoke.js"></script>
-    <div id="container-d71ecab1003336d25c9d7f9f401f9d64"></div>
-    <script async="async" data-cfasync="false" src="//foresightcoercive.com/d71ecab1003336d25c9d7f9f401f9d64/invoke.js"></script>
-    <div id="container-d71ecab1003336d25c9d7f9f401f9d64"></div>
-    <!-- Firebase script and JS files -->
-    <script type="module" src="script.js"></script>
+  <!-- main body -->
+  <main>
+    <div class="book-container" id="bookContainer">
+      <!-- Books will be dynamically loaded here -->
+    </div>
+  </main>
+
+  <!-- Firebase script and JS files -->
+  <script type="module" src="script.js"></script>
 </body>
 
 </html>
