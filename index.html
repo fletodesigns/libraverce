@@ -12,7 +12,6 @@
 </head>
 
 <body>
-
     <!-- navbar -->
     <header class="navbar">
         <div class="logo">
@@ -20,7 +19,7 @@
             <p>Libraverce</p>
         </div>
         <div class="menu">
-            <!-- /* search input */  -->
+            <!-- Search input -->
             <div class="group">
                 <svg class="icon" aria-hidden="true" viewBox="0 0 24 24">
                     <g>
@@ -32,7 +31,7 @@
                 <input type="text" id="searchBar" class="search-bar" placeholder="Search books..." onkeyup="searchBooks()">
             </div>
             <button>
-                <a href="/upload_page/upload.html"><i class="fa-solid fa-sliders"></i></a>
+                <i class="fa-solid fa-sliders"></i>
             </button>
         </div>
     </header>
@@ -40,49 +39,15 @@
     <!-- main body -->
     <main>
         <div class="book-container" id="bookContainer">
-            <!-- Repeat this block for 10 book cards -->
-            <div class="book-card">
-                <div class="cover">
-                    <img src="/img/covers/nootiyanjam_muriyile_penkutty.jpg" alt="Book Cover">
-                </div>
-                <h2>105-ആം   മുറിയിലെ പെൺകുട്ടി</h2>
-                <h3>nootiyanjam muriyile penkutti</h3>
-                <div class="actions">
-                    <button class="download-btn"><i class="fa-solid fa-book"></i><a
-                            href="https://www.dropbox.com/scl/fi/35w9c2mxy204p5avlsug1/Noottiyanchaam_Muriyile_Penkutty.pdf?rlkey=wk9patit92cllqjnwix8tg3qv&st=930om3a1&dl=0"
-                            target="_blank"> Read now</a></button>
-                    <button class="favorite-btn"><a
-                            href="https://k2s.cc/file/69c6bbb902148/Noottiyanchaam_Muriyile_Penkutty_%281%29.pdf"
-                            target="_blank"><i class="fa-solid fa-download"></i></a></button>
-                </div>
-            </div>
-            <!-- Add more book cards here -->
-        </div>
-        <div class="book-container" id="bookContainer">
-            <!-- Repeat this block for 10 book cards -->
-            <div class="book-card">
-                <div class="cover">
-                    <img src="/img/covers/nootiyanjam_muriyile_penkutty.jpg" alt="Book Cover">
-                </div>
-                <h2>105-ആം   മുറിയിലെ പെൺകുട്ടി</h2>
-                <h3>nootiyanjam muriyile penkutti</h3>
-                <div class="actions">
-                    <button class="download-btn"><i class="fa-solid fa-book"></i><a
-                            href="https://www.dropbox.com/scl/fi/35w9c2mxy204p5avlsug1/Noottiyanchaam_Muriyile_Penkutty.pdf?rlkey=wk9patit92cllqjnwix8tg3qv&st=930om3a1&dl=0"
-                            target="_blank"> Read now</a></button>
-                    <button class="favorite-btn"><a
-                            href="https://k2s.cc/file/69c6bbb902148/Noottiyanchaam_Muriyile_Penkutty_%281%29.pdf"
-                            target="_blank"><i class="fa-solid fa-download"></i></a></button>
-                </div>
-            </div>
-            <!-- Add more book cards here -->
+            <!-- Books will be dynamically loaded here -->
         </div>
     </main>
     <script async="async" data-cfasync="false" src="//foresightcoercive.com/d71ecab1003336d25c9d7f9f401f9d64/invoke.js"></script>
     <div id="container-d71ecab1003336d25c9d7f9f401f9d64"></div>
     <script async="async" data-cfasync="false" src="//foresightcoercive.com/d71ecab1003336d25c9d7f9f401f9d64/invoke.js"></script>
-<div id="container-d71ecab1003336d25c9d7f9f401f9d64"></div>
-    <script src="/script.js"></script>
+    <div id="container-d71ecab1003336d25c9d7f9f401f9d64"></div>
+    <!-- Firebase script and JS files -->
+    <script type="module" src="script.js"></script>
 </body>
 
 </html>
