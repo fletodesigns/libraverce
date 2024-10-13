@@ -22,6 +22,15 @@ books.set(101, {
   downloadLink: "https://ufile.io/1h0o7q5h",
 });
 
+books.set(102, {
+  title: 'ഒരു പോലീസ് സർജന്റെ ഓർമ്മക്കുറിപ്പുകൾ ',
+  subtitle: 'oru police surgente ormmakkurippukal',
+  bookNo: 102,
+  imgSrc: "/img/covers/oru_police_surgante_0ormakkurippukal.jpg",
+  readNowLink: "/books/oru-police-surgeonte-ormakkurippukal.pdf", // Another book link
+  downloadLink: "https://ufile.io/1h0o7q5h",
+});
+
 function setBooks() {
   // Clear the book container before appending new content
   bookContainer.innerHTML = '';
