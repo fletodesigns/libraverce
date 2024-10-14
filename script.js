@@ -11,6 +11,7 @@ books.set(100, {
   imgSrc: "/img/covers/nootiyanjam_muriyile_penkutty.jpg",
   readNowLink: "/books/Noottiyanchaam_Muriyile_Penkutty.pdf", // Link to the book
   downloadLink: "https://ufile.io/bti5qrls",
+  authorName: 'Akhil p darmajan',
 });
 
 books.set(101, {
@@ -20,6 +21,7 @@ books.set(101, {
   imgSrc: "/img/covers/sherlock_holmes_malayalam.jpg",
   readNowLink: "/books/Sherlock-Holmes-Malayalam.pdf", // Another book link
   downloadLink: "https://ufile.io/1h0o7q5h",
+  authorName: 'Akhil p darmajan',
 });
 
 books.set(102, {
@@ -29,6 +31,17 @@ books.set(102, {
   imgSrc: "/img/covers/oru_police_surgante_0ormakkurippukal.jpg",
   readNowLink: "/books/oru-police-surgeonte-ormakkurippukal.pdf", // Another book link
   downloadLink: "https://ufile.io/1h0o7q5h",
+  authorName: 'Akhil p darmajan',
+});
+
+books.set(103, {
+  title: 'റാം c/o ആനന്ദി',
+  subtitle: 'ram c/o anandhi',
+  bookNo: 103,
+  imgSrc: "/img/covers/.jpg",
+  readNowLink: "/books/ram-c-o-anandhi.pdf", // Another book link
+  downloadLink: "",
+  authorName: 'Akhil p darmajan',
 });
 
 function setBooks() {
@@ -47,6 +60,7 @@ function setBooks() {
         <h5>${book.bookNo}</h5>
         <h2>${book.title}</h2>
         <h3>${book.subtitle}</h3>
+        <h4>${book.authorName}</h4>
       </div>
       <div class='actions'>
         <button class='read-now-btn'><i class='fa-solid fa-book'></i> Read now</button>
@@ -82,8 +96,9 @@ function searchBooks() {
     const title = card.querySelector('h2').textContent.toLowerCase();
     const subtitle = card.querySelector('h3').textContent.toLowerCase();
     const bookNo = card.querySelector('h5').textContent.toLowerCase();
+    const authorName = card.querySelector('h4').textContent.toLowerCase();
 
-    if (title.includes(query) || subtitle.includes(query) || bookNo.includes(query)) {
+    if (title.includes(query) || subtitle.includes(query) || bookNo.includes(query) || authorName.includes(query)) {
       card.style.display = 'block';
     } else {
       card.style.display = 'none';

@@ -182,6 +182,10 @@ main {
     display: none;
 }
 
+.book-card h4 {
+    display: none;
+}
+
 .cover {
     width: 100%;
     height: 220px;
