@@ -75,12 +75,17 @@ function setBooks() {
 
     // Add click event listener to the "Read now" button
     const readNowButton = bookCard.querySelector('.read-now-btn');
+    const readCloseButton = document.getElementById('readCloseBtn');
     readNowButton.addEventListener('click', () => {
       // Update the iframe src with the readNowLink of the clicked book
       readNowIframe.src = book.readNowLink;
 
       // Display the read now page as flex when the book is clicked
       readNowPage.style.display = 'flex';
+    });
+    readCloseButton.addEventListener('click', () => {
+      // Display the read now page as flex when the book is clicked
+      readNowPage.style.display = 'none';
     });
   });
 }

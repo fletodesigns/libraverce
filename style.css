@@ -321,4 +321,21 @@ main {
     height: 80%;
     border: none;
   }
+
   
+.read-now-page button {
+    width: 60px;
+    height: 60px;
+    border: none;
+    background: var(--bg-color);
+    box-shadow: 0 0 20px #1f1f1f57;
+    position: absolute;
+    top: 2%;
+    left: 2%;
+    font-size: 50px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 100;
+}
