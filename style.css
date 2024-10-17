@@ -339,3 +339,9 @@ main {
     justify-content: center;
     font-weight: 100;
 }
+
+@media (max-width: 890px) {
+    .read-now-page {
+       flex-direction: column;
+    }
+}
