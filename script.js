@@ -19,8 +19,8 @@ books.set(101, {
   subtitle: 'sherlock holmes malaylam',
   bookNo: 101,
   imgSrc: "/img/covers/sherlock_holmes_malayalam.jpg",
-  readNowLink: "https://fledrive.netlify.app/download/books/sherlock_holmes_full", // Another book link
-  downloadLink: "https://fledrive.netlify.app/files/books/Sherlock-Holmes-Malayalam.pdf",
+  readNowLink: "https://fledrive.netlify.app/files/books/Sherlock-Holmes-Malayalam.pdf", // Another book link
+  downloadLink: "https://fledrive.netlify.app/download/books/sherlock_holmes_full",
   authorName: 'Akhil p darmajan',
 });
 
