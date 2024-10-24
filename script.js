@@ -9,7 +9,7 @@ books.set(100, {
   subtitle: 'nootiyanjaam muriyile penkutti',
   bookNo: 100,
   imgSrc: "/img/covers/nootiyanjam_muriyile_penkutty.jpg",
-  readNowLink: "/books/Noottiyanchaam_Muriyile_Penkutty.pdf", // Link to the book
+  readNowLink: "https://fledrive.netlify.app/files/books/Noottiyanchaam_Muriyile_Penkutty.pdf", // Link to the book
   downloadLink: "https://ufile.io/bti5qrls",
   authorName: 'Akhil p darmajan',
 });
