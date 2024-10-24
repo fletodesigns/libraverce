@@ -10,7 +10,7 @@ books.set(100, {
   bookNo: 100,
   imgSrc: "/img/covers/nootiyanjam_muriyile_penkutty.jpg",
   readNowLink: "https://fledrive.netlify.app/files/books/Noottiyanchaam_Muriyile_Penkutty.pdf", // Link to the book
-  downloadLink: "https://ufile.io/bti5qrls",
+  downloadLink: "https://fledrive.netlify.app/download/books/noottiyanjam_muriyile_penkutty",
   authorName: 'Akhil p darmajan',
 });
 
@@ -19,8 +19,8 @@ books.set(101, {
   subtitle: 'sherlock holmes malaylam',
   bookNo: 101,
   imgSrc: "/img/covers/sherlock_holmes_malayalam.jpg",
-  readNowLink: "/books/Sherlock-Holmes-Malayalam.pdf", // Another book link
-  downloadLink: "https://ufile.io/1h0o7q5h",
+  readNowLink: "https://fledrive.netlify.app/download/books/sherlock_holmes_full", // Another book link
+  downloadLink: "https://fledrive.netlify.app/files/books/Sherlock-Holmes-Malayalam.pdf",
   authorName: 'Akhil p darmajan',
 });
 
@@ -59,8 +59,8 @@ books.set(105, {
   subtitle: 'meloohayile-chinjeevikal',
   bookNo: 105,
   imgSrc: "/img/covers/meloohayile-chinjeevikal.jpg",
-  readNowLink: "/books/meloohayile-chinjeevikal.pdf", // Another book link
-  downloadLink: "https://ufile.io/1h0o7q5h",
+  readNowLink: "https://fledrive.netlify.app/files/books/meluhayile_chiranjeevikal.pdf", // Another book link
+  downloadLink: "https://fledrive.netlify.app/download/books/meluhayile_chiranjeevikal",
   authorName: 'Akhil p darmajan',
 });
 
