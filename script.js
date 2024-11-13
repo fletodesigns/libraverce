@@ -44,35 +44,6 @@ books.set(103, {
   authorName: 'Akhil p darmajan',
 });
 
-books.set(104, {
-  title: 'നാഗന്മാരുടെ രഹസ്യം ',
-  subtitle: 'naganmarude-rahasyam',
-  bookNo: 104,
-  imgSrc: "/img/covers/naganmarude-rahasyam.jpg",
-  readNowLink: "/books/naganmarude-rahasyam.pdf", // Another book link
-  downloadLink: "https://ufile.io/1h0o7q5h",
-  authorName: 'Akhil p darmajan',
-});
-
-books.set(105, {
-  title: 'മെലൂഹയിലെ ചിരഞ്ജീവികൾ ',
-  subtitle: 'meloohayile-chinjeevikal',
-  bookNo: 105,
-  imgSrc: "/img/covers/meloohayile-chinjeevikal.jpg",
-  readNowLink: "https://fledrive.netlify.app/files/books/meluhayile_chiranjeevikal.pdf", // Another book link
-  downloadLink: "https://fledrive.netlify.app/download/books/meluhayile_chiranjeevikal",
-  authorName: 'Akhil p darmajan',
-});
-
-books.set(106, {
-  title: 'വായുപുത്രിമാരുടെ ശപഥം ',
-  subtitle: 'wayuputhranmarude-shapadham',
-  bookNo: 106,
-  imgSrc: "/img/covers/wayuputhranmarude-shapadham.jpg",
-  readNowLink: "/books/wayuputhranmarude-shapadham.pdf", // Another book link
-  downloadLink: "https://ufile.io/1h0o7q5h",
-  authorName: 'Akhil p darmajan',
-});
 
 function setBooks() {
   // Clear the book container before appending new content
