@@ -14,6 +14,50 @@ books.set(100, {
   authorName: 'Akhil p darmajan',
 });
 
+books.set(101, {
+  title: 'ഫ്രാൻസിസ് ഇട്ടിക്കോര',
+  subtitle: 'francis ittykora',
+  bookNo: 101,
+  imgSrc: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FImg%2FCovers%2Ffrancis_ittykora%20cover.jpg?alt=media&token=41122fdb-8e5e-441b-960e-f1c57e096507",
+  readNowLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FMalayalam%2FFrancis_Itty_Cora.pdf?alt=media&token=c87b7220-d9c3-44b2-89e6-53acb2b328f8", // Another book link
+  downloadLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FMalayalam%2FFrancis_Itty_Cora.pdf?alt=media&token=c87b7220-d9c3-44b2-89e6-53acb2b328f8",
+  authorName: 'T D ramakrishnan',
+});
+
+
+books.set(102, {
+  title: 'ആടുജീവിതം',
+  subtitle: 'aadujeevitham',
+  bookNo: 102,
+  imgSrc: "",
+  readNowLink: "", // Another book link
+  downloadLink: "",
+  authorName: 'Benyamin',
+});
+
+
+books.set(103, {
+  title: 'മെർക്കുറി ഐലന്റ്',
+  subtitle: 'mercury island',
+  bookNo: 103,
+  imgSrc: "",
+  readNowLink: "", // Another book link
+  downloadLink: "",
+  authorName: 'akhil p dharmajan',
+});
+
+
+books.set(104, {
+  title: 'രഹസ്യം ',
+  subtitle: 'the secret',
+  bookNo: 104,
+  imgSrc: "",
+  readNowLink: "", // Another book link
+  downloadLink: "",
+  authorName: 'Rhonda byrne',
+});
+
+
 
 function setBooks() {
   // Clear the book container before appending new content
