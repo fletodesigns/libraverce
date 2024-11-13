@@ -5,42 +5,12 @@ const readNowPage = document.getElementById("readNowPage"); // Target the popup 
 let books = new Map();
 
 books.set(100, {
-  title: '105-ാം മുറിയിലെ പെൺകുട്ടി',
-  subtitle: 'nootiyanjaam muriyile penkutti',
-  bookNo: 100,
-  imgSrc: "/img/covers/nootiyanjam_muriyile_penkutty.jpg",
-  readNowLink: "https://fledrive.netlify.app/files/books/Noottiyanchaam_Muriyile_Penkutty.pdf", // Link to the book
-  downloadLink: "https://fledrive.netlify.app/download/books/noottiyanjam_muriyile_penkutty",
-  authorName: 'Akhil p darmajan',
-});
-
-books.set(101, {
-  title: 'ഷെർലക്ക് ഹോംസ് മലയാളം ',
-  subtitle: 'sherlock holmes malaylam',
-  bookNo: 101,
-  imgSrc: "/img/covers/sherlock_holmes_malayalam.jpg",
-  readNowLink: "https://fledrive.netlify.app/files/books/Sherlock-Holmes-Malayalam.pdf", // Another book link
-  downloadLink: "https://fledrive.netlify.app/download/books/sherlock_holmes_full",
-  authorName: 'Akhil p darmajan',
-});
-
-books.set(102, {
-  title: 'ഒരു പോലീസ് സർജന്റെ ഓർമ്മക്കുറിപ്പുകൾ ',
-  subtitle: 'oru police surgente ormmakkurippukal',
-  bookNo: 102,
-  imgSrc: "/img/covers/oru_police_surgante_0ormakkurippukal.jpg",
-  readNowLink: "/books/oru-police-surgeonte-ormakkurippukal.pdf", // Another book link
-  downloadLink: "https://ufile.io/1h0o7q5h",
-  authorName: 'Akhil p darmajan',
-});
-
-books.set(103, {
   title: 'റാം c/o ആനന്ദി',
   subtitle: 'ram c/o anandhi',
-  bookNo: 103,
-  imgSrc: "/img/covers/.jpg",
-  readNowLink: "/books/ram-c-o-anandhi.pdf", // Another book link
-  downloadLink: "",
+  bookNo: 100,
+  imgSrc: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FImg%2FCovers%2FRam-Co-Anandi.jpg?alt=media&token=66d25151-d20c-4df1-ae48-e645f9b4775e",
+  readNowLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FMalayalam%2FRam%20c_o%20Anandhi.pdf?alt=media&token=dedd6ad2-de55-4c5b-9ac8-c51ebf39ddc0", // Another book link
+  downloadLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FMalayalam%2FRam%20c_o%20Anandhi.pdf?alt=media&token=dedd6ad2-de55-4c5b-9ac8-c51ebf39ddc0",
   authorName: 'Akhil p darmajan',
 });
 
