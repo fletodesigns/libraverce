@@ -29,9 +29,9 @@ books.set(102, {
   title: 'ആടുജീവിതം',
   subtitle: 'aadujeevitham',
   bookNo: 102,
-  imgSrc: "",
-  readNowLink: "", // Another book link
-  downloadLink: "",
+  imgSrc: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FImg%2FCovers%2FAdujeevitham.jpg?alt=media&token=42a47c73-f2e2-49a2-b0b7-64ac5e10c31c",
+  readNowLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FMalayalam%2Faadujeevitham.pdf?alt=media&token=09b528b0-7e1b-4234-a2d0-59c51e4ff8bb", // Another book link
+  downloadLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FMalayalam%2Faadujeevitham.pdf?alt=media&token=09b528b0-7e1b-4234-a2d0-59c51e4ff8bb",
   authorName: 'Benyamin',
 });
 
@@ -40,9 +40,9 @@ books.set(103, {
   title: 'മെർക്കുറി ഐലന്റ്',
   subtitle: 'mercury island',
   bookNo: 103,
-  imgSrc: "",
-  readNowLink: "", // Another book link
-  downloadLink: "",
+  imgSrc: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FImg%2FCovers%2Fmercury-island.jpg?alt=media&token=a928cf7f-66e9-4936-a949-2653ad68f76e",
+  readNowLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FMalayalam%2Fmercury_island.pdf?alt=media&token=57a42c39-b518-4ea6-9fb0-244a05abb1c5", // Another book link
+  downloadLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FMalayalam%2Fmercury_island.pdf?alt=media&token=57a42c39-b518-4ea6-9fb0-244a05abb1c5",
   authorName: 'akhil p dharmajan',
 });
 
@@ -51,9 +51,9 @@ books.set(104, {
   title: 'രഹസ്യം ',
   subtitle: 'the secret',
   bookNo: 104,
-  imgSrc: "",
-  readNowLink: "", // Another book link
-  downloadLink: "",
+  imgSrc: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FImg%2FCovers%2Frahasyam.jpg?alt=media&token=aa8455ad-ab33-4602-9462-6e53e0600661",
+  readNowLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FMalayalam%2FThe%20Secret%20(Malayalam).pdf?alt=media&token=31b39687-fd03-4f9f-991f-6c95a5383026", // Another book link
+  downloadLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FMalayalam%2FThe%20Secret%20(Malayalam).pdf?alt=media&token=31b39687-fd03-4f9f-991f-6c95a5383026",
   authorName: 'Rhonda byrne',
 });
 
