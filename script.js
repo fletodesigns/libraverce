@@ -24,7 +24,6 @@ books.set(101, {
   authorName: 'T D ramakrishnan',
 });
 
-
 books.set(102, {
   title: 'ആടുജീവിതം',
   subtitle: 'aadujeevitham',
@@ -34,7 +33,6 @@ books.set(102, {
   downloadLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FMalayalam%2Faadujeevitham.pdf?alt=media&token=09b528b0-7e1b-4234-a2d0-59c51e4ff8bb",
   authorName: 'Benyamin',
 });
-
 
 books.set(103, {
   title: 'മെർക്കുറി ഐലന്റ്',
@@ -46,6 +44,15 @@ books.set(103, {
   authorName: 'akhil p dharmajan',
 });
 
+books.set(105, {
+  title: 'Atomic habitd',
+  subtitle: 'atomic habits',
+  bookNo: 105,
+  imgSrc: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FImg%2FCovers%2Fatomic%20habits.jpg?alt=media&token=0c5b6413-16f5-4bb0-a1fe-8b7a61a4e3c0",
+  readNowLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FEnglish%2Fatomic%20habits.pdf?alt=media&token=3a2a5545-9539-4d32-8d29-002bf7f02df4", // Another book link
+  downloadLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FEnglish%2Fatomic%20habits.pdf?alt=media&token=3a2a5545-9539-4d32-8d29-002bf7f02df4",
+  authorName: 'James clear',
+});
 
 books.set(104, {
   title: 'രഹസ്യം ',
@@ -55,6 +62,37 @@ books.set(104, {
   readNowLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FMalayalam%2FThe%20Secret%20(Malayalam).pdf?alt=media&token=31b39687-fd03-4f9f-991f-6c95a5383026", // Another book link
   downloadLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FMalayalam%2FThe%20Secret%20(Malayalam).pdf?alt=media&token=31b39687-fd03-4f9f-991f-6c95a5383026",
   authorName: 'Rhonda byrne',
+});
+
+
+books.set(10, {
+  title: 'The beast of buckingham palace',
+  subtitle: 'the beast of the buckingham palace',
+  bookNo: 10,
+  imgSrc: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FImg%2FCovers%2FThe-Beast-of-Buckingham-Palace.webp?alt=media&token=4343b7b1-f08c-45d2-a065-ca9a2ea8fae5",
+  readNowLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FEnglish%2FThe_Beast_of_Buckingham_Palace.pdf?alt=media&token=e71a0632-cac4-4891-a917-b1b115de76cb", // Another book link
+  downloadLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FEnglish%2FThe_Beast_of_Buckingham_Palace.pdf?alt=media&token=e71a0632-cac4-4891-a917-b1b115de76cb",
+  authorName: 'David Walliams',
+});
+
+books.set(10, {
+  title: '',
+  subtitle: '',
+  bookNo: 10,
+  imgSrc: "",
+  readNowLink: "", // Another book link
+  downloadLink: "",
+  authorName: '',
+});
+
+books.set(10, {
+  title: '',
+  subtitle: '',
+  bookNo: 10,
+  imgSrc: "",
+  readNowLink: "", // Another book link
+  downloadLink: "",
+  authorName: '',
 });
 
 
