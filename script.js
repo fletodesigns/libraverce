@@ -74,14 +74,14 @@ books.set(104, {
   authorName: 'Rhonda byrne',
 });
 
-books.set(10, {
-  title: '',
-  subtitle: '',
-  bookNo: 10,
-  imgSrc: "",
-  readNowLink: "", // Another book link
-  downloadLink: "",
-  authorName: '',
+books.set(107, {
+  title: 'The girl in room 105',
+  subtitle: 'the girl in room 105',
+  bookNo: 107,
+  imgSrc: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FImg%2FCovers%2Fthe%20girl%20in%20room%20105.jpg?alt=media&token=039c4e46-8765-43cc-8543-b3e09c029c8b",
+  readNowLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FEnglish%2Fgirl%20in%20room%20105.pdf?alt=media&token=6015b374-295c-4fe5-aa47-bc9df262d88b", // Another book link
+  downloadLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FEnglish%2Fgirl%20in%20room%20105.pdf?alt=media&token=6015b374-295c-4fe5-aa47-bc9df262d88b",
+  authorName: 'Chetan bhagat',
 });
 
 books.set(10, {
