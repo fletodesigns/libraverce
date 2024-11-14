@@ -28,7 +28,7 @@ books.set(102, {
   title: 'ആടുജീവിതം',
   subtitle: 'aadujeevitham',
   bookNo: 102,
-  imgSrc: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FImg%2FCovers%2FAdujeevitham.jpg?alt=media&token=42a47c73-f2e2-49a2-b0b7-64ac5e10c31c",
+  imgSrc: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FImg%2FCovers%2Faadujeevitham.jpg?alt=media&token=df293e8b-b7ea-4683-a4a4-aede4fa9256b",
   readNowLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FMalayalam%2Faadujeevitham.pdf?alt=media&token=09b528b0-7e1b-4234-a2d0-59c51e4ff8bb", // Another book link
   downloadLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FMalayalam%2Faadujeevitham.pdf?alt=media&token=09b528b0-7e1b-4234-a2d0-59c51e4ff8bb",
   authorName: 'Benyamin',
