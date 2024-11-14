@@ -46,7 +46,7 @@ books.set(103, {
 
 books.set(104, {
   title: 'രഹസ്യം ',
-  subtitle: 'the secret',
+  subtitle: 'the secret , rahasyam',
   bookNo: 104,
   imgSrc: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FImg%2FCovers%2Frahasyam.jpg?alt=media&token=aa8455ad-ab33-4602-9462-6e53e0600661",
   readNowLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FMalayalam%2FThe%20Secret%20(Malayalam).pdf?alt=media&token=31b39687-fd03-4f9f-991f-6c95a5383026", // Another book link
@@ -55,7 +55,7 @@ books.set(104, {
 });
 
 books.set(105, {
-  title: 'Atomic habitd',
+  title: 'Atomic habits',
   subtitle: 'atomic habits',
   bookNo: 105,
   imgSrc: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FImg%2FCovers%2Fatomic%20habits.jpg?alt=media&token=0c5b6413-16f5-4bb0-a1fe-8b7a61a4e3c0",
