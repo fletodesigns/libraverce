@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Upload</title>
+  <link rel="stylesheet" href="upload.css">
+  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js" type="module"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js" type="module"></script>
+</head>
+<body>
+
+  <div class="upload-form">
+    <h1>Upload a New Book</h1>
+    <form id="book-upload-form">
+      <label for="bookNo">Book Number:</label>
+      <input type="text" id="bookNo" name="bookNo" required><br><br>
+
+      <label for="title">Book Title:</label>
+      <input type="text" id="title" name="title" required><br><br>
+
+      <label for="subtitle">Subtitle:</label>
+      <input type="text" id="subtitle" name="subtitle"><br><br>
+
+      <label for="authorName">Author Name:</label>
+      <input type="text" id="authorName" name="authorName" required><br><br>
+
+      <label for="imgSrc">Book Cover Image URL:</label>
+      <input type="text" id="imgSrc" name="imgSrc" placeholder="Enter Image URL" required><br><br>
+
+      <label for="downloadLink">Download Link:</label>
+      <input type="url" id="downloadLink" name="downloadLink" required><br><br>
+
+      <button type="submit">Upload Book</button>
+    </form>
+  </div>
+
+  <script src="upload.js" type="module"></script>
+</body>
+</html>

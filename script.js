@@ -1,200 +1,33 @@
-const bookContainer = document.getElementById("bookContainer");
-const readNowIframe = document.getElementById("readNowIframe"); // Target the iframe
-const readNowPage = document.getElementById("readNowPage"); // Target the popup container
+// Import the necessary Firebase modules
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-analytics.js";
 
-let books = new Map();
+// Your Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyD9jJ_m67YiWPf6ASoQfeRhjkE4OPMG1Ew",
+  authDomain: "libravercebyfleto.firebaseapp.com",
+  projectId: "libravercebyfleto",
+  storageBucket: "libravercebyfleto.firebasestorage.app",
+  messagingSenderId: "108867020286",
+  appId: "1:108867020286:web:ac305357ed7bc72eea4caf",
+  measurementId: "G-R78SVV5SRD"
+};
 
-books.set(100, {
-  title: 'റാം c/o ആനന്ദി',
-  subtitle: 'ram c/o anandhi',
-  bookNo: 100,
-  imgSrc: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FImg%2FCovers%2FRam-Co-Anandi.jpg?alt=media&token=66d25151-d20c-4df1-ae48-e645f9b4775e",
-  readNowLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FMalayalam%2FRam%20c_o%20Anandhi.pdf?alt=media&token=dedd6ad2-de55-4c5b-9ac8-c51ebf39ddc0", // Another book link
-  downloadLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FMalayalam%2FRam%20c_o%20Anandhi.pdf?alt=media&token=dedd6ad2-de55-4c5b-9ac8-c51ebf39ddc0",
-  authorName: 'Akhil p darmajan',
-});
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
 
-books.set(101, {
-  title: 'ഫ്രാൻസിസ് ഇട്ടിക്കോര',
-  subtitle: 'francis ittykora',
-  bookNo: 101,
-  imgSrc: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FImg%2FCovers%2Ffrancis_ittykora%20cover.jpg?alt=media&token=41122fdb-8e5e-441b-960e-f1c57e096507",
-  readNowLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FMalayalam%2FFrancis_Itty_Cora.pdf?alt=media&token=c87b7220-d9c3-44b2-89e6-53acb2b328f8", // Another book link
-  downloadLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FMalayalam%2FFrancis_Itty_Cora.pdf?alt=media&token=c87b7220-d9c3-44b2-89e6-53acb2b328f8",
-  authorName: 'T D ramakrishnan',
-});
+// Initialize Firestore
+const db = getFirestore(app);
 
-books.set(102, {
-  title: 'ആടുജീവിതം',
-  subtitle: 'aadujeevitham',
-  bookNo: 102,
-  imgSrc: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FImg%2FCovers%2Faadujeevitham.jpg?alt=media&token=df293e8b-b7ea-4683-a4a4-aede4fa9256b",
-  readNowLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FMalayalam%2Faadujeevitham.pdf?alt=media&token=09b528b0-7e1b-4234-a2d0-59c51e4ff8bb", // Another book link
-  downloadLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FMalayalam%2Faadujeevitham.pdf?alt=media&token=09b528b0-7e1b-4234-a2d0-59c51e4ff8bb",
-  authorName: 'Benyamin',
-});
+// Reference to the Firestore collection 'Books'
+const booksCollection = collection(db, 'Books');
 
-books.set(103, {
-  title: 'മെർക്കുറി ഐലന്റ്',
-  subtitle: 'mercury island',
-  bookNo: 103,
-  imgSrc: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FImg%2FCovers%2Fmercury-island.jpg?alt=media&token=a928cf7f-66e9-4936-a949-2653ad68f76e",
-  readNowLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FMalayalam%2Fmercury_island.pdf?alt=media&token=57a42c39-b518-4ea6-9fb0-244a05abb1c5", // Another book link
-  downloadLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FMalayalam%2Fmercury_island.pdf?alt=media&token=57a42c39-b518-4ea6-9fb0-244a05abb1c5",
-  authorName: 'akhil p dharmajan',
-});
-
-books.set(104, {
-  title: 'രഹസ്യം ',
-  subtitle: 'the secret rahasyam',
-  bookNo: 104,
-  imgSrc: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FImg%2FCovers%2Frahasyam.jpg?alt=media&token=aa8455ad-ab33-4602-9462-6e53e0600661",
-  readNowLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FMalayalam%2FThe%20Secret%20(Malayalam).pdf?alt=media&token=31b39687-fd03-4f9f-991f-6c95a5383026", // Another book link
-  downloadLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FMalayalam%2FThe%20Secret%20(Malayalam).pdf?alt=media&token=31b39687-fd03-4f9f-991f-6c95a5383026",
-  authorName: 'Rhonda byrne',
-});
-
-books.set(105, {
-  title: 'Atomic habits',
-  subtitle: 'atomic habits',
-  bookNo: 105,
-  imgSrc: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FImg%2FCovers%2Fatomic%20habits.jpg?alt=media&token=0c5b6413-16f5-4bb0-a1fe-8b7a61a4e3c0",
-  readNowLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FEnglish%2Fatomic%20habits.pdf?alt=media&token=3a2a5545-9539-4d32-8d29-002bf7f02df4", // Another book link
-  downloadLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FEnglish%2Fatomic%20habits.pdf?alt=media&token=3a2a5545-9539-4d32-8d29-002bf7f02df4",
-  authorName: 'James clear',
-});
-
-books.set(106, {
-  title: 'The beast of buckingham palace',
-  subtitle: 'the beast of the buckingham palace',
-  bookNo: 106,
-  imgSrc: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FImg%2FCovers%2FThe-Beast-of-Buckingham-Palace.webp?alt=media&token=4343b7b1-f08c-45d2-a065-ca9a2ea8fae5",
-  readNowLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FEnglish%2FThe_Beast_of_Buckingham_Palace.pdf?alt=media&token=e71a0632-cac4-4891-a917-b1b115de76cb", // Another book link
-  downloadLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FEnglish%2FThe_Beast_of_Buckingham_Palace.pdf?alt=media&token=e71a0632-cac4-4891-a917-b1b115de76cb",
-  authorName: 'David Walliams',
-});
-
-books.set(107, {
-  title: 'The girl in room 105',
-  subtitle: 'the girl in room 105',
-  bookNo: 107,
-  imgSrc: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FImg%2FCovers%2Fthe%20girl%20in%20room%20105.jpg?alt=media&token=039c4e46-8765-43cc-8543-b3e09c029c8b",
-  readNowLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FEnglish%2Fgirl%20in%20room%20105.pdf?alt=media&token=6015b374-295c-4fe5-aa47-bc9df262d88b", // Another book link
-  downloadLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FEnglish%2Fgirl%20in%20room%20105.pdf?alt=media&token=6015b374-295c-4fe5-aa47-bc9df262d88b",
-  authorName: 'Chetan bhagat',
-});
-
-books.set(108, {
-  title: 'Deception Point',
-  subtitle: 'deception point',
-  bookNo: 108,
-  imgSrc: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FImg%2FCovers%2Fdeception%20point.jpg?alt=media&token=c057df79-45fb-4d89-b49d-685ec31a9061",
-  readNowLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FEnglish%2FDeception_Point.pdf?alt=media&token=fe653737-8120-4893-aaf7-333b02e6ed26", // Another book link
-  downloadLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FEnglish%2FDeception_Point.pdf?alt=media&token=fe653737-8120-4893-aaf7-333b02e6ed26",
-  authorName: 'Dan brown',
-});
-
-books.set(109, {
-  title: 'One arranged murder',
-  subtitle: 'one arranged marriage murder',
-  bookNo: 109,
-  imgSrc: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FImg%2FCovers%2FOne-Arranged-Murder.jpg?alt=media&token=5fdb5b43-d48c-440b-8dc7-e58550c78a8c",
-  readNowLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FEnglish%2FOne_Arranged_Murder.pdf?alt=media&token=e9fb7336-8235-4b46-8c94-f404768a1758", // Another book link
-  downloadLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FEnglish%2FOne_Arranged_Murder.pdf?alt=media&token=e9fb7336-8235-4b46-8c94-f404768a1758",
-  authorName: 'Chetan bhagat',
-});
-
-books.set(110, {
-  title: 'കുടിയേറ്റം ',
-  subtitle: 'kudiyeettam',
-  bookNo: 110,
-  imgSrc: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FImg%2FCovers%2Fkudiyettam.jpg?alt=media&token=0af63d8b-761d-4f07-bb90-1a6c6142d0b4",
-  readNowLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FMalayalam%2FKudiyettam%20(Malayalam%20Edition).pdf?alt=media&token=ad28127e-c931-48e3-a854-294d7b8971db", // Another book link
-  downloadLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FMalayalam%2FKudiyettam%20(Malayalam%20Edition).pdf?alt=media&token=ad28127e-c931-48e3-a854-294d7b8971db",
-  authorName: 'Benyamin',
-});
-
-books.set(111, {
-  title: 'The song of Achilles',
-  subtitle: 'the song of achilles',
-  bookNo: 111,
-  imgSrc: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FImg%2FCovers%2Fthe%20song%20of%20achilles.jpeg?alt=media&token=a0d96fcd-446c-40eb-b4ff-7d1bfec95822",
-  readNowLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FMalayalam%2Fsong%20of%20achilles.pdf?alt=media&token=9cc129ca-4df0-4558-b38d-e759d9e90cd0", // Another book link
-  downloadLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FMalayalam%2Fsong%20of%20achilles.pdf?alt=media&token=9cc129ca-4df0-4558-b38d-e759d9e90cd0",
-  authorName: 'Madeline Miller',
-});
-
-books.set(112, {
-  title: 'ഓജോ ബോർഡ് ',
-  subtitle: 'ouija board',
-  bookNo: 112,
-  imgSrc: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FImg%2FCovers%2Fouija%20board.jpeg?alt=media&token=b36e5763-927c-451f-bfba-c0bff2b493e3",
-  readNowLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FMalayalam%2FOuija%20Board.pdf?alt=media&token=fd3e5e1d-6c7a-4aac-9707-b012f1b2a72e", // Another book link
-  downloadLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FMalayalam%2FOuija%20Board.pdf?alt=media&token=fd3e5e1d-6c7a-4aac-9707-b012f1b2a72e",
-  authorName: 'Akhil p dharmajan',
-});
-
-books.set(113, {
-  title: 'It ends with us',
-  subtitle: 'it ends with us',
-  bookNo: 113,
-  imgSrc: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FImg%2FCovers%2Fit%20ends%20with%20us.jpeg?alt=media&token=9128f762-7756-4932-8b49-0509dc7c843f",
-  readNowLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FEnglish%2FIt%20Ends%20With%20Us%20(Colleen%20Hoover).pdf?alt=media&token=6fe4f38d-57e6-4762-9134-00e5318ee2e4", // Another book link
-  downloadLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FEnglish%2FIt%20Ends%20With%20Us%20(Colleen%20Hoover).pdf?alt=media&token=6fe4f38d-57e6-4762-9134-00e5318ee2e4",
-  authorName: 'Colleen hoover',
-});
-
-books.set(114, {
-  title: 'Maybe now',
-  subtitle: 'maybe now ',
-  bookNo: 114,
-  imgSrc: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FImg%2FCovers%2Fmaybe%20now.jpg?alt=media&token=457b38fd-7c04-4006-b4c5-fde87af0d041",
-  readNowLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FEnglish%2FMaybe_Now.pdf?alt=media&token=7bdbb91f-a93f-442e-b67a-bde68adc57ae", // Another book link
-  downloadLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FEnglish%2FMaybe_Now.pdf?alt=media&token=7bdbb91f-a93f-442e-b67a-bde68adc57ae",
-  authorName: 'Colleen hoover',
-});
-
-books.set(115, {
-  title: 'The housemaid',
-  subtitle: 'The housemaid',
-  bookNo: 115,
-  imgSrc: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FImg%2FCovers%2Fthe%20housemaid.jpg?alt=media&token=c3fe221b-8a9b-4890-8a8a-9a00588d1fe4",
-  readNowLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FEnglish%2FThe%20Housemaid.pdf?alt=media&token=065c8e41-dfe3-4fff-9c95-0a3ff157ebdf", // Another book link
-  downloadLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FEnglish%2FThe%20Housemaid.pdf?alt=media&token=065c8e41-dfe3-4fff-9c95-0a3ff157ebdf",
-  authorName: 'Freida McFadden',
-});
-
-books.set(116, {
-  title: "The housemaid'secrets ",
-  subtitle: 'The housemaids secrets',
-  bookNo: 116,
-  imgSrc: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FImg%2FCovers%2Fthe%20housemaids%20secrets.webp?alt=media&token=59032cbd-a5c2-4462-bbc2-c1447e78e7c0",
-  readNowLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FEnglish%2FThe%20Housemaids%20Secret.pdf?alt=media&token=63c23026-9865-4070-a181-28400325fe61", // Another book link
-  downloadLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FEnglish%2FThe%20Housemaids%20Secret.pdf?alt=media&token=63c23026-9865-4070-a181-28400325fe61",
-  authorName: 'Freida McFadden',
-});
-
-// books.set(10, {
-//   title: '',
-//   subtitle: '',
-//   bookNo: 10,
-//   imgSrc: "",
-//   readNowLink: "", // Another book link
-//   downloadLink: "",
-//   authorName: '',
-// });
-
-
-
-function setBooks() {
-  // Clear the book container before appending new content
-  bookContainer.innerHTML = '';
-
-  // Loop through each book in the books map and create a book card
-  books.forEach((book) => {
-    let bookCard = document.createElement('div');
-    bookCard.classList.add('book-card'); // Adding a class for styling
-    bookCard.innerHTML = `
+// Function to create a book card
+function createBookCard(book) {
+  const cardHTML = `
+    <div class='book-card'>
       <div class='cover'>
         <img src='${book.imgSrc}' alt='Book Cover'>
       </div>
@@ -210,48 +43,29 @@ function setBooks() {
           <a href='${book.downloadLink}' target='_blank'><i class='fa-solid fa-download'></i></a>
         </button>
       </div>
-    `;
-
-    // Append the book card to the container
-    bookContainer.appendChild(bookCard);
-
-    // Add click event listener to the "Read now" button
-    const readNowButton = bookCard.querySelector('.read-now-btn');
-    const readCloseButton = document.getElementById('readCloseBtn');
-    readNowButton.addEventListener('click', () => {
-      // Update the iframe src with the readNowLink of the clicked book
-      readNowIframe.src = book.readNowLink;
-
-      // Display the read now page as flex when the book is clicked
-      readNowPage.style.display = 'flex';
-    });
-    readCloseButton.addEventListener('click', () => {
-      // Display the read now page as flex when the book is clicked
-      readNowPage.style.display = 'none';
-    });
-  });
+    </div>
+  `;
+  return cardHTML;
 }
 
-setBooks();
-
-// Search books
-function searchBooks() {
-  const query = document.getElementById('searchBar').value.toLowerCase();
-  const bookCards = document.querySelectorAll('.book-card');
-
-  bookCards.forEach(card => {
-    const title = card.querySelector('h2').textContent.toLowerCase();
-    const subtitle = card.querySelector('h3').textContent.toLowerCase();
-    const bookNo = card.querySelector('h5').textContent.toLowerCase();
-    const authorName = card.querySelector('h4').textContent.toLowerCase();
-
-    if (title.includes(query) || subtitle.includes(query) || bookNo.includes(query) || authorName.includes(query)) {
-      card.style.display = 'block';
-    } else {
-      card.style.display = 'none';
-    }
-  });
+// Function to fetch books from Firestore and display them
+async function displayBooks() {
+  const booksContainer = document.getElementById('booksContainer');
+  
+  try {
+    // Fetch books from Firestore
+    const snapshot = await getDocs(booksCollection);
+    
+    // Loop through each document and display the book card
+    snapshot.forEach((doc) => {
+      const bookData = doc.data();
+      const bookCard = createBookCard(bookData);
+      booksContainer.innerHTML += bookCard;  // Append the new book card
+    });
+  } catch (error) {
+    console.error("Error fetching books: ", error);
+  }
 }
 
-// Search function connected to the search bar
-document.getElementById('searchBar').addEventListener('keyup', searchBooks);
+// Call the function to display books on page load
+window.onload = displayBooks;
