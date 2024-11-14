@@ -134,6 +134,16 @@ books.set(112, {
   authorName: 'Akhil p dharmajan',
 });
 
+books.set(113, {
+  title: 'It ends with us',
+  subtitle: 'it ends with us',
+  bookNo: 113,
+  imgSrc: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FImg%2FCovers%2Fit%20ends%20with%20us.jpeg?alt=media&token=9128f762-7756-4932-8b49-0509dc7c843f",
+  readNowLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FEnglish%2FIt%20Ends%20With%20Us%20(Colleen%20Hoover).pdf?alt=media&token=6fe4f38d-57e6-4762-9134-00e5318ee2e4", // Another book link
+  downloadLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FEnglish%2FIt%20Ends%20With%20Us%20(Colleen%20Hoover).pdf?alt=media&token=6fe4f38d-57e6-4762-9134-00e5318ee2e4",
+  authorName: 'Colleen hoover',
+});
+
 // books.set(10, {
 //   title: '',
 //   subtitle: '',
