@@ -140,7 +140,6 @@ input:hover {
 main {
     padding-top: 5rem;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
@@ -298,15 +297,15 @@ main {
         grid-template-columns: repeat(1, 1fr);
         /* 2 columns on small screens */
     }
-
+    
     .book-card {
         min-width: 300px;
     }
-
+    
     .cover {
         height: 300px;
     }
-
+    
     .cover img {
         height: 300px;
     }
@@ -315,9 +314,10 @@ main {
 .read-now-page {
     display: none;
     position: fixed;
+    flex-direction: column;
     top: 0;
     left: 0;
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     justify-content: center;
     align-items: center;
