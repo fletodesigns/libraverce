@@ -207,7 +207,7 @@ function setBooks() {
       <div class='actions'>
         <button class='read-now-btn'><i class='fa-solid fa-book'></i> Read now</button>
         <button class='download-btn'>
-          <a href='${book.downloadLink}' target='_blank' download><i class='fa-solid fa-download'></i></a>
+          <a href='${book.downloadLink}' target='_blank'><i class='fa-solid fa-download'></i></a>
         </button>
       </div>
     `;
