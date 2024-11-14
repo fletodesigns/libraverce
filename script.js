@@ -125,13 +125,13 @@ books.set(111, {
 });
 
 books.set(112, {
-  title: '',
-  subtitle: '',
-  bookNo: 10,
-  imgSrc: "",
-  readNowLink: "", // Another book link
-  downloadLink: "",
-  authorName: '',
+  title: 'ഓജോ ബോർഡ് ',
+  subtitle: 'ouija board',
+  bookNo: 112,
+  imgSrc: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FImg%2FCovers%2Fouija%20board.jpeg?alt=media&token=b36e5763-927c-451f-bfba-c0bff2b493e3",
+  readNowLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FMalayalam%2FOuija%20Board.pdf?alt=media&token=fd3e5e1d-6c7a-4aac-9707-b012f1b2a72e", // Another book link
+  downloadLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FMalayalam%2FOuija%20Board.pdf?alt=media&token=fd3e5e1d-6c7a-4aac-9707-b012f1b2a72e",
+  authorName: 'Akhil p dharmajan',
 });
 
 // books.set(10, {
