@@ -71,7 +71,7 @@ function setBooks() {
       <div class='cover'>
         <img src='${book.imgSrc}' alt='Book Cover'>
       </div>
-      <div>
+      <div class="details">
         <h5>${book.bookNo}</h5>
         <h2>${book.title}</h2>
         <h3>${book.subtitle}</h3>
