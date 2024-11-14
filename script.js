@@ -24,16 +24,6 @@ books.set(101, {
   authorName: 'T D ramakrishnan',
 });
 
-books.set(105, {
-  title: 'Atomic habitd',
-  subtitle: 'atomic habits',
-  bookNo: 105,
-  imgSrc: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FImg%2FCovers%2Fatomic%20habits.jpg?alt=media&token=0c5b6413-16f5-4bb0-a1fe-8b7a61a4e3c0",
-  readNowLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FEnglish%2Fatomic%20habits.pdf?alt=media&token=3a2a5545-9539-4d32-8d29-002bf7f02df4", // Another book link
-  downloadLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FEnglish%2Fatomic%20habits.pdf?alt=media&token=3a2a5545-9539-4d32-8d29-002bf7f02df4",
-  authorName: 'James clear',
-});
-
 books.set(102, {
   title: 'ആടുജീവിതം',
   subtitle: 'aadujeevitham',
@@ -54,16 +44,6 @@ books.set(103, {
   authorName: 'akhil p dharmajan',
 });
 
-books.set(106, {
-  title: 'The beast of buckingham palace',
-  subtitle: 'the beast of the buckingham palace',
-  bookNo: 106,
-  imgSrc: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FImg%2FCovers%2FThe-Beast-of-Buckingham-Palace.webp?alt=media&token=4343b7b1-f08c-45d2-a065-ca9a2ea8fae5",
-  readNowLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FEnglish%2FThe_Beast_of_Buckingham_Palace.pdf?alt=media&token=e71a0632-cac4-4891-a917-b1b115de76cb", // Another book link
-  downloadLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FEnglish%2FThe_Beast_of_Buckingham_Palace.pdf?alt=media&token=e71a0632-cac4-4891-a917-b1b115de76cb",
-  authorName: 'David Walliams',
-});
-
 books.set(104, {
   title: 'രഹസ്യം ',
   subtitle: 'the secret',
@@ -72,6 +52,26 @@ books.set(104, {
   readNowLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FMalayalam%2FThe%20Secret%20(Malayalam).pdf?alt=media&token=31b39687-fd03-4f9f-991f-6c95a5383026", // Another book link
   downloadLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FMalayalam%2FThe%20Secret%20(Malayalam).pdf?alt=media&token=31b39687-fd03-4f9f-991f-6c95a5383026",
   authorName: 'Rhonda byrne',
+});
+
+books.set(105, {
+  title: 'Atomic habitd',
+  subtitle: 'atomic habits',
+  bookNo: 105,
+  imgSrc: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FImg%2FCovers%2Fatomic%20habits.jpg?alt=media&token=0c5b6413-16f5-4bb0-a1fe-8b7a61a4e3c0",
+  readNowLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FEnglish%2Fatomic%20habits.pdf?alt=media&token=3a2a5545-9539-4d32-8d29-002bf7f02df4", // Another book link
+  downloadLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FEnglish%2Fatomic%20habits.pdf?alt=media&token=3a2a5545-9539-4d32-8d29-002bf7f02df4",
+  authorName: 'James clear',
+});
+
+books.set(106, {
+  title: 'The beast of buckingham palace',
+  subtitle: 'the beast of the buckingham palace',
+  bookNo: 106,
+  imgSrc: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FImg%2FCovers%2FThe-Beast-of-Buckingham-Palace.webp?alt=media&token=4343b7b1-f08c-45d2-a065-ca9a2ea8fae5",
+  readNowLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FEnglish%2FThe_Beast_of_Buckingham_Palace.pdf?alt=media&token=e71a0632-cac4-4891-a917-b1b115de76cb", // Another book link
+  downloadLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FEnglish%2FThe_Beast_of_Buckingham_Palace.pdf?alt=media&token=e71a0632-cac4-4891-a917-b1b115de76cb",
+  authorName: 'David Walliams',
 });
 
 books.set(107, {
@@ -84,6 +84,26 @@ books.set(107, {
   authorName: 'Chetan bhagat',
 });
 
+books.set(108, {
+  title: 'Deception Point',
+  subtitle: 'deception point',
+  bookNo: 108,
+  imgSrc: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FImg%2FCovers%2Fdeception%20point.jpg?alt=media&token=c057df79-45fb-4d89-b49d-685ec31a9061",
+  readNowLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FEnglish%2FDeception_Point.pdf?alt=media&token=fe653737-8120-4893-aaf7-333b02e6ed26", // Another book link
+  downloadLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FEnglish%2FDeception_Point.pdf?alt=media&token=fe653737-8120-4893-aaf7-333b02e6ed26",
+  authorName: 'Dan brown',
+});
+
+books.set(109, {
+  title: 'One arranged murder',
+  subtitle: 'one arranged marriage murder',
+  bookNo: 109,
+  imgSrc: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FImg%2FCovers%2FOne-Arranged-Murder.jpg?alt=media&token=5fdb5b43-d48c-440b-8dc7-e58550c78a8c",
+  readNowLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FEnglish%2FOne_Arranged_Murder.pdf?alt=media&token=e9fb7336-8235-4b46-8c94-f404768a1758", // Another book link
+  downloadLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FEnglish%2FOne_Arranged_Murder.pdf?alt=media&token=e9fb7336-8235-4b46-8c94-f404768a1758",
+  authorName: 'Chetan bhagat',
+});
+
 books.set(10, {
   title: '',
   subtitle: '',
@@ -93,6 +113,36 @@ books.set(10, {
   downloadLink: "",
   authorName: '',
 });
+
+books.set(10, {
+  title: '',
+  subtitle: '',
+  bookNo: 10,
+  imgSrc: "",
+  readNowLink: "", // Another book link
+  downloadLink: "",
+  authorName: '',
+});
+
+books.set(10, {
+  title: '',
+  subtitle: '',
+  bookNo: 10,
+  imgSrc: "",
+  readNowLink: "", // Another book link
+  downloadLink: "",
+  authorName: '',
+});
+
+// books.set(10, {
+//   title: '',
+//   subtitle: '',
+//   bookNo: 10,
+//   imgSrc: "",
+//   readNowLink: "", // Another book link
+//   downloadLink: "",
+//   authorName: '',
+// });
 
 
 
