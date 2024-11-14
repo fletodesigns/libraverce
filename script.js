@@ -114,17 +114,17 @@ books.set(110, {
   authorName: 'Benyamin',
 });
 
-books.set(10, {
-  title: '',
-  subtitle: '',
-  bookNo: 10,
-  imgSrc: "",
-  readNowLink: "", // Another book link
-  downloadLink: "",
-  authorName: '',
+books.set(111, {
+  title: 'The song of Achilles',
+  subtitle: 'the song of achilles',
+  bookNo: 111,
+  imgSrc: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FImg%2FCovers%2Fthe%20song%20of%20achilles.jpeg?alt=media&token=a0d96fcd-446c-40eb-b4ff-7d1bfec95822",
+  readNowLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FMalayalam%2Fsong%20of%20achilles.pdf?alt=media&token=9cc129ca-4df0-4558-b38d-e759d9e90cd0", // Another book link
+  downloadLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FMalayalam%2Fsong%20of%20achilles.pdf?alt=media&token=9cc129ca-4df0-4558-b38d-e759d9e90cd0",
+  authorName: 'Madeline Miller',
 });
 
-books.set(10, {
+books.set(112, {
   title: '',
   subtitle: '',
   bookNo: 10,
