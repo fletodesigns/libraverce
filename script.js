@@ -154,14 +154,24 @@ books.set(114, {
   authorName: 'Colleen hoover',
 });
 
-books.set(1, {
-  title: '',
-  subtitle: '',
-  bookNo: 1,
-  imgSrc: "",
-  readNowLink: "", // Another book link
-  downloadLink: "",
-  authorName: '',
+books.set(115, {
+  title: 'The housemaid',
+  subtitle: 'The housemaid',
+  bookNo: 115,
+  imgSrc: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FImg%2FCovers%2Fthe%20housemaid.jpg?alt=media&token=c3fe221b-8a9b-4890-8a8a-9a00588d1fe4",
+  readNowLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FEnglish%2FThe%20Housemaid.pdf?alt=media&token=065c8e41-dfe3-4fff-9c95-0a3ff157ebdf", // Another book link
+  downloadLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FEnglish%2FThe%20Housemaid.pdf?alt=media&token=065c8e41-dfe3-4fff-9c95-0a3ff157ebdf",
+  authorName: 'Freida McFadden',
+});
+
+books.set(116, {
+  title: "The housemaid'secrets ",
+  subtitle: 'The housemaids secrets',
+  bookNo: 116,
+  imgSrc: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FImg%2FCovers%2Fthe%20housemaids%20secrets.webp?alt=media&token=59032cbd-a5c2-4462-bbc2-c1447e78e7c0",
+  readNowLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FEnglish%2FThe%20Housemaids%20Secret.pdf?alt=media&token=63c23026-9865-4070-a181-28400325fe61", // Another book link
+  downloadLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FEnglish%2FThe%20Housemaids%20Secret.pdf?alt=media&token=63c23026-9865-4070-a181-28400325fe61",
+  authorName: 'Freida McFadden',
 });
 
 // books.set(10, {
