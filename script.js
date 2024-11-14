@@ -46,7 +46,7 @@ books.set(103, {
 
 books.set(104, {
   title: 'രഹസ്യം ',
-  subtitle: 'the secret , rahasyam',
+  subtitle: 'the secret rahasyam',
   bookNo: 104,
   imgSrc: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FImg%2FCovers%2Frahasyam.jpg?alt=media&token=aa8455ad-ab33-4602-9462-6e53e0600661",
   readNowLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FMalayalam%2FThe%20Secret%20(Malayalam).pdf?alt=media&token=31b39687-fd03-4f9f-991f-6c95a5383026", // Another book link
@@ -142,6 +142,26 @@ books.set(113, {
   readNowLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FEnglish%2FIt%20Ends%20With%20Us%20(Colleen%20Hoover).pdf?alt=media&token=6fe4f38d-57e6-4762-9134-00e5318ee2e4", // Another book link
   downloadLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FEnglish%2FIt%20Ends%20With%20Us%20(Colleen%20Hoover).pdf?alt=media&token=6fe4f38d-57e6-4762-9134-00e5318ee2e4",
   authorName: 'Colleen hoover',
+});
+
+books.set(114, {
+  title: 'Maybe now',
+  subtitle: 'maybe now ',
+  bookNo: 114,
+  imgSrc: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FImg%2FCovers%2Fmaybe%20now.jpg?alt=media&token=457b38fd-7c04-4006-b4c5-fde87af0d041",
+  readNowLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FEnglish%2FMaybe_Now.pdf?alt=media&token=7bdbb91f-a93f-442e-b67a-bde68adc57ae", // Another book link
+  downloadLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FEnglish%2FMaybe_Now.pdf?alt=media&token=7bdbb91f-a93f-442e-b67a-bde68adc57ae",
+  authorName: 'Colleen hoover',
+});
+
+books.set(1, {
+  title: '',
+  subtitle: '',
+  bookNo: 1,
+  imgSrc: "",
+  readNowLink: "", // Another book link
+  downloadLink: "",
+  authorName: '',
 });
 
 // books.set(10, {
