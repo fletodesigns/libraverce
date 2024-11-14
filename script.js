@@ -104,14 +104,14 @@ books.set(109, {
   authorName: 'Chetan bhagat',
 });
 
-books.set(10, {
-  title: '',
-  subtitle: '',
-  bookNo: 10,
-  imgSrc: "",
-  readNowLink: "", // Another book link
-  downloadLink: "",
-  authorName: '',
+books.set(110, {
+  title: 'കുടിയേറ്റം ',
+  subtitle: 'kudiyeettam',
+  bookNo: 110,
+  imgSrc: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FImg%2FCovers%2Fkudiyettam.jpg?alt=media&token=0af63d8b-761d-4f07-bb90-1a6c6142d0b4",
+  readNowLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FMalayalam%2FKudiyettam%20(Malayalam%20Edition).pdf?alt=media&token=ad28127e-c931-48e3-a854-294d7b8971db", // Another book link
+  downloadLink: "https://firebasestorage.googleapis.com/v0/b/fledrive.appspot.com/o/Projects%2FLibraverce%2FMalayalam%2FKudiyettam%20(Malayalam%20Edition).pdf?alt=media&token=ad28127e-c931-48e3-a854-294d7b8971db",
+  authorName: 'Benyamin',
 });
 
 books.set(10, {
