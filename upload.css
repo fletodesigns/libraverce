@@ -120,3 +120,7 @@ body {
 .upload-form button:hover {
   box-shadow: 0 0 50px var(--dark-color-1);
 }
+
+.upload-form button:active {
+  transform: scale(0.9);
+}
