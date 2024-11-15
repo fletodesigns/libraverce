@@ -31,7 +31,8 @@ document.getElementById('book-upload-form').addEventListener('submit', function 
   const authorName = document.getElementById('authorName').value;
   const imgSrc = document.getElementById('imgSrc').value;  // Get the image URL
   const downloadLink = document.getElementById('downloadLink').value;
-
+  
+  
   // Create a new book object
   const newBook = {
     bookNo: bookNo,
@@ -41,7 +42,7 @@ document.getElementById('book-upload-form').addEventListener('submit', function 
     imgSrc: imgSrc,  // Store image URL as text
     downloadLink: downloadLink
   };
-
+  
   // Add the new book to Firestore
   addDoc(booksCollection, newBook).then(() => {
     alert("Book uploaded successfully!");
@@ -50,3 +51,10 @@ document.getElementById('book-upload-form').addEventListener('submit', function 
     console.error("Error adding document: ", error);
   });
 });
+
+const coverImg = document.getElementById('cover-img');
+const imgSrc = document.getElementById('imgSrc');
+
+imgSrc.onkeydown = () =>{
+  coverImg.src = imgSrc.value;
+}
