@@ -1,6 +1,6 @@
 // Targeting necessary elements
-const readNowIframe = document.getElementById("readNowIframe"); // Target the iframe
-const readNowPage = document.getElementById("readNowPage");
+const downloadNowBtn = document.getElementById("downloadNowIframe"); // Target the iframe
+const downloadNowPage = document.getElementById("downloadNowPage");
 
 // Firebase setup
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
@@ -39,11 +39,13 @@ function createBookCard(book) {
         <h4>${book.authorName}</h4>
       </div>
       <div class="actions">
-        <button class="read-now-btn" data-download-link="${book.downloadLink}">
-          <i class="fa-solid fa-book"></i> Read now
-        </button>
-        <button class="download-btn">
-          <a href="${book.fileLink}" target="_blank"><i class="fa-solid fa-download"></i></a>
+        <a href="${book.fileLink}" target="_blank" download>
+            <button class="read-now-btn">
+                <i class="fa-solid fa-book"></i> Read now
+            </button>
+        </a>
+        <button class="download-btn" data-download-link="${book.fileLink}">
+            <i class="fa-solid fa-download"></i>
         </button>
       </div>
     </div>
@@ -51,7 +53,7 @@ function createBookCard(book) {
 }
 
 // Function to display books from Firestore
-async function displayBooks() {
+async function displayBooks(book) {
   const booksContainer = document.getElementById("booksContainer");
 
   try {
@@ -64,19 +66,20 @@ async function displayBooks() {
     });
 
     // Add click event listeners to all read-now buttons after they are rendered
-    const readNowButtons = document.querySelectorAll(".read-now-btn");
-    readNowButtons.forEach((btn) => {
+    const downloadButton = document.querySelectorAll(".download-btn");
+    downloadButton.forEach((btn) => {
       btn.addEventListener("click", (e) => {
+        const downloadNowLink = document.getElementById('downloadNowLink');
         const downloadLink = e.currentTarget.getAttribute("data-download-link");
 
-        // Show the readNowPage
-        if (readNowPage) {
-          readNowPage.style.display = "flex"; // Change the display to flex
+        // Show the downloadNowPage
+        if (downloadNowPage) {
+          downloadNowPage.style.display = "flex"; // Change the display to flex
         }
 
         // Set the iframe src to the book's downloadLink
-        if (readNowIframe) {
-          readNowIframe.src = downloadLink;
+        if (downloadNowLink) {
+          downloadNowLink.href = downloadLink;
         }
       });
     });
@@ -119,10 +122,10 @@ document.getElementById("searchBar").addEventListener("keyup", searchBooks);
 const readCloseButton = document.getElementById("readCloseBtn");
 if (readCloseButton) {
   readCloseButton.addEventListener("click", () => {
-    // Hide the readNowPage when the close button is clicked
-    if (readNowPage) {
-      readNowPage.style.display = "none";
-      readNowIframe.src = ""; // Reset iframe src to prevent showing previous book
+    // Hide the downloadNowPage when the close button is clicked
+    if (downloadNowPage) {
+      downloadNowPage.style.display = "none";
+      downloadNowIframe.src = ""; // Reset iframe src to prevent showing previous book
     }
   });
 }
