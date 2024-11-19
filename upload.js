@@ -5,14 +5,14 @@ import { getFirestore, collection, addDoc } from 'https://www.gstatic.com/fireba
 // Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-    apiKey: "AIzaSyD9jJ_m67YiWPf6ASoQfeRhjkE4OPMG1Ew",
-    authDomain: "libravercebyfleto.firebaseapp.com",
-    projectId: "libravercebyfleto",
-    storageBucket: "libravercebyfleto.firebasestorage.app",
-    messagingSenderId: "108867020286",
-    appId: "1:108867020286:web:ac305357ed7bc72eea4caf",
-    measurementId: "G-R78SVV5SRD"
-  };
+  apiKey: "AIzaSyDpNiBfj1WPVputBiSLBsdOnm0MFLjVYlE",
+  authDomain: "flebooks.firebaseapp.com",
+  projectId: "flebooks",
+  storageBucket: "flebooks.firebasestorage.app",
+  messagingSenderId: "458785971847",
+  appId: "1:458785971847:web:ed6138c7df952c9f3d6222",
+  measurementId: "G-XMD1VDPZGT"
+};
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
