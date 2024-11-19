@@ -43,7 +43,7 @@ function createBookCard(book) {
           <i class="fa-solid fa-book"></i> Read now
         </button>
         <button class="download-btn">
-          <a href="${book.filesLink}" target="_blank"><i class="fa-solid fa-download"></i></a>
+          <a href="${book.fileLink}" target="_blank"><i class="fa-solid fa-download"></i></a>
         </button>
       </div>
     </div>
