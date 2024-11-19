@@ -40,7 +40,7 @@ document.getElementById('book-upload-form').addEventListener('submit', function 
     subtitle: subtitle,
     authorName: authorName,
     imgSrc: imgSrc,  // Store image URL as text
-    downloadLink: downloadLink
+    fileLink: downloadLink
   };
   
   // Add the new book to Firestore
