@@ -1,60 +1,64 @@
-// Import the necessary Firebase modules
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js';
-import { getFirestore, collection, addDoc } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js';
+const GITHUB_TOKEN = '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';
+const REPO_OWNER = 'fletodesigns';
+const REPO_NAME = 'Flestorage';
+const FOLDER_PATH = 'files/Projects/Flebooks/Malayalam';
 
-// Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "AIzaSyDpNiBfj1WPVputBiSLBsdOnm0MFLjVYlE",
-  authDomain: "flebooks.firebaseapp.com",
-  projectId: "flebooks",
-  storageBucket: "flebooks.firebasestorage.app",
-  messagingSenderId: "458785971847",
-  appId: "1:458785971847:web:ed6138c7df952c9f3d6222",
-  measurementId: "G-XMD1VDPZGT"
+const uploadFileToGitHub = async (file) => {
+  const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${FOLDER_PATH}/${file.name}`;
+
+  const reader = new FileReader();
+  reader.onload = async (e) => {
+    const fileContent = btoa(e.target.result);
+
+    const response = await fetch(url, {
+      method: 'PUT',
+      headers: {
+        Authorization: `Bearer ${GITHUB_TOKEN}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        message: `Add file: ${file.name}`,
+        content: fileContent,
+      }),
+    });
+
+    const result = await response.json();
+    if (result.content) {
+      const fileLink = result.content.download_url;
+      saveFileLinkToFlebooks(fileLink);
+    } else {
+      console.error('Error uploading file:', result.message);
+      alert('Failed to upload file.');
+    }
+  };
+
+  reader.readAsBinaryString(file);
 };
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+const saveFileLinkToFlebooks = (fileLink) => {
+  // Assuming Firebase is used to save the link
+  const db = firebase.firestore();
+  const docRef = db.collection('files').doc(); // Update with your collection and doc structure
 
-// Reference to the Firestore collection 'Books'
-const booksCollection = collection(db, 'Books');
+  docRef
+    .set({
+      fileLink: fileLink,
+      uploadedAt: new Date(),
+    })
+    .then(() => {
+      alert('File uploaded and link saved successfully!');
+    })
+    .catch((error) => {
+      console.error('Error saving file link:', error);
+      alert('Failed to save file link.');
+    });
+};
 
-document.getElementById('book-upload-form').addEventListener('submit', function (e) {
-  e.preventDefault();  // Prevent the form from submitting the traditional way
-
-  // Get values from the form
-  const bookNo = document.getElementById('bookNo').value;
-  const title = document.getElementById('title').value;
-  const subtitle = document.getElementById('subtitle').value;
-  const authorName = document.getElementById('authorName').value;
-  const imgSrc = document.getElementById('imgSrc').value;  // Get the image URL
-  const downloadLink = document.getElementById('downloadLink').value;
-  
-  
-  // Create a new book object
-  const newBook = {
-    bookNo: bookNo,
-    title: title,
-    subtitle: subtitle,
-    authorName: authorName,
-    imgSrc: imgSrc,  // Store image URL as text
-    fileLink: downloadLink
-  };
-  
-  // Add the new book to Firestore
-  addDoc(booksCollection, newBook).then(() => {
-    alert("Book uploaded successfully!");
-    document.getElementById('book-upload-form').reset(); // Clear the form
-  }).catch(error => {
-    console.error("Error adding document: ", error);
-  });
+document.getElementById('fileInput').addEventListener('change', (event) => {
+  const file = event.target.files[0];
+  if (file) {
+    uploadFileToGitHub(file);
+  } else {
+    alert('Please select a file to upload.');
+  }
 });
-
-const coverImg = document.getElementById('cover-img');
-const imgSrc = document.getElementById('imgSrc');
-
-imgSrc.onkeydown = () =>{
-  coverImg.src = imgSrc.value;
-}
