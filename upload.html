@@ -7,8 +7,6 @@
   <link rel="stylesheet" href="upload.css">
   <link rel="stylesheet" href="main.css">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js" type="module"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js" type="module"></script>
 </head>
 <body>
   <!-- navbar -->
@@ -47,9 +45,11 @@
         <label for="imgSrc">Book Cover Image URL:</label>
         <input type="text" id="imgSrc" name="imgSrc" placeholder="Enter Image URL" required>
   
-        <div class="img-container">
-          <img src="https://media.istockphoto.com/photos/blank-white-book-cover-picture-id513229371?k=6&m=513229371&s=170667a&w=0&h=YXisBTVWZjsfkc682iXGZj8PulioHfpjnBTTdHteNkU=" alt="" id="cover-img">
-        </div>
+        <label for="language">Language:</label>
+        <select name="language" id="languageInput">
+          <option value="malayalam">Malayalam</option>
+          <option value="english">English</option>
+        </select>
 
         <label for="fileInput">Upload PDF:</label>
         <input type="file" id="fileInput" accept="application/pdf" />
