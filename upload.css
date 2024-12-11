@@ -95,6 +95,17 @@ body {
   transition: border 0.3s ease, box-shadow 0.3s ease;
 }
 
+.upload-form select {
+  width: 100%;
+  padding: 14px 18px;
+  border-radius: 10px;
+  border: 1px solid var(--dark-color-2);
+  background-color: var(--input-bg-color);
+  font-size: 1.1rem;
+  color: var(--text-color);
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
 .upload-form input:focus,
 .upload-form input:hover {
     outline: none;
