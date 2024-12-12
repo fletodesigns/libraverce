@@ -21,7 +21,7 @@ const db = getFirestore(app);
 const booksCollection = collection(db, "Books");
 
 // GitHub Configuration
-const GITHUB_TOKEN = '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';
+const GITHUB_TOKEN = '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';
 const API_BASE_URL = 'https://api.github.com/repos/fletodesigns/Flestorage/contents';
 
 // Helper function to encode ArrayBuffer to Base64
