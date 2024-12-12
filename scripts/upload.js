@@ -1,6 +1,6 @@
 // Import Firebase modules 
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js';
-import { getFirestore, collection, addDoc } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js';
+import { getFirestore, collection, addDoc, doc, getDoc } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js';
 
 // Firebase configuration
 const firebaseConfig = {
@@ -20,18 +20,29 @@ const db = getFirestore(app);
 // Reference to Firestore 'Books' collection
 const booksCollection = collection(db, "Books");
 
-// GitHub Configuration
-const GITHUB_TOKEN = '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';
-const API_BASE_URL = 'https://api.github.com/repos/fletodesigns/Flestorage/contents';
-
 // Helper function to encode ArrayBuffer to Base64
 function arrayBufferToBase64(buffer) {
   const binary = new Uint8Array(buffer).reduce((acc, byte) => acc + String.fromCharCode(byte), '');
   return btoa(binary);
 }
 
+const API_BASE_URL = 'https://api.github.com/repos/fletodesigns/Flestorage/contents';
+
+// Function to get GitHub token from Firestore
+async function getGitHubToken() {
+  const docRef = doc(db, "Data", "github token");
+  const docSnap = await getDoc(docRef);
+  
+  if (docSnap.exists()) {
+    return docSnap.data().token; // Return the 'token' field value
+  } else {
+    throw new Error("GitHub token not found in Firestore.");
+  }
+}
+
 // Function to upload files to GitHub
 async function uploadToGitHub(file, path, fileName) {
+  const token = await getGitHubToken(); // Fetch the GitHub token dynamically
   const url = `${API_BASE_URL}/${path}/${fileName}`;
   const fileBuffer = await file.arrayBuffer();
   const base64Content = arrayBufferToBase64(fileBuffer);
@@ -42,7 +53,7 @@ async function uploadToGitHub(file, path, fileName) {
   const checkResponse = await fetch(url, {
     method: 'GET',
     headers: {
-      Authorization: `Bearer ${GITHUB_TOKEN}`,
+      Authorization: `Bearer ${token}`,
       Accept: 'application/vnd.github.v3+json',
     },
   });
@@ -60,7 +71,7 @@ async function uploadToGitHub(file, path, fileName) {
   const response = await fetch(url, {
     method: 'PUT',
     headers: {
-      Authorization: `Bearer ${GITHUB_TOKEN}`,
+      Authorization: `Bearer ${token}`,
       Accept: 'application/vnd.github.v3+json',
     },
     body: JSON.stringify({
