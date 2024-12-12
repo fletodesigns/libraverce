@@ -1,4 +1,4 @@
-// Import Firebase modules
+// Import Firebase modules 
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js';
 import { getFirestore, collection, addDoc } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js';
 
@@ -7,18 +7,21 @@ const firebaseConfig = {
   apiKey: "AIzaSyDpNiBfj1WPVputBiSLBsdOnm0MFLjVYlE",
   authDomain: "flebooks.firebaseapp.com",
   projectId: "flebooks",
-  storageBucket: "flebooks.firebasestorage.app",
+  storageBucket: "flebooks.appspot.com",
   messagingSenderId: "458785971847",
   appId: "1:458785971847:web:ed6138c7df952c9f3d6222",
-  measurementId: "G-XMD1VDPZGT"
+  measurementId: "G-XMD1VDPZGT",
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
+// Reference to Firestore 'Books' collection
+const booksCollection = collection(db, "Books");
+
 // GitHub Configuration
-const GITHUB_TOKEN = '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';
+const GITHUB_TOKEN = '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';
 const API_BASE_URL = 'https://api.github.com/repos/fletodesigns/Flestorage/contents';
 
 // Helper function to encode ArrayBuffer to Base64
@@ -28,9 +31,10 @@ function arrayBufferToBase64(buffer) {
 }
 
 // Function to upload files to GitHub
-async function uploadToGitHub(fileContent, path, fileName) {
+async function uploadToGitHub(file, path, fileName) {
   const url = `${API_BASE_URL}/${path}/${fileName}`;
-  const base64Content = arrayBufferToBase64(fileContent);
+  const fileBuffer = await file.arrayBuffer();
+  const base64Content = arrayBufferToBase64(fileBuffer);
 
   let sha = null;
 
@@ -83,53 +87,43 @@ async function uploadToGitHub(fileContent, path, fileName) {
 
 // Form submission handler
 document.getElementById('book-upload-form').addEventListener('submit', async function (e) {
-  e.preventDefault();
+  e.preventDefault(); // Prevent the form from submitting traditionally
+
+  // Get values from the form
+  const bookNo = document.getElementById('bookNo').value;
+  const title = document.getElementById('title').value;
+  const subtitle = document.getElementById('subtitle').value;
+  const authorName = document.getElementById('authorName').value;
+  const language = document.getElementById('languageInput').value; // Get the selected language
+  const imgFile = document.getElementById('imgFile').files[0];
+  const pdfFile = document.getElementById('fileInput').files[0];
 
   try {
-    // Get form data
-    const bookNo = document.getElementById('bookNo').value;
-    const title = document.getElementById('title').value;
-    const subtitle = document.getElementById('subtitle').value;
-    const authorName = document.getElementById('authorName').value;
-    const language = document.getElementById('languageInput').value;
+    // Upload cover image
+    const coverPath = `files/Projects/Flebooks/${language}/cover`;
+    const coverUrl = await uploadToGitHub(imgFile, coverPath, imgFile.name);
 
-    const coverFile = document.getElementById('imgFile').files[0];
-    const pdfFile = document.getElementById('fileInput').files[0];
+    // Upload PDF
+    const pdfPath = `files/Projects/Flebooks/${language}/pdf`;
+    const pdfUrl = await uploadToGitHub(pdfFile, pdfPath, pdfFile.name);
 
-    // Define paths based on language
-    const coverPath = language === 'english'
-      ? 'files/Projects/Flebooks/English/covers'
-      : 'files/Projects/Flebooks/Malayalam/cover';
-    const pdfPath = language === 'english'
-      ? 'files/Projects/Flebooks/English/pdf'
-      : 'files/Projects/Flebooks/Malayalam/pdf';
-
-    // Upload cover image to GitHub
-    const coverFileContent = await coverFile.arrayBuffer();
-    const coverFileName = coverFile.name;
-    const coverUrl = await uploadToGitHub(coverFileContent, coverPath, coverFileName);
-
-    // Upload PDF file to GitHub
-    const pdfFileContent = await pdfFile.arrayBuffer();
-    const pdfFileName = pdfFile.name;
-    const pdfUrl = await uploadToGitHub(pdfFileContent, pdfPath, pdfFileName);
-
-    // Save book details to Firestore
+    // Create a new book object
     const newBook = {
       bookNo: bookNo,
       title: title,
       subtitle: subtitle,
       authorName: authorName,
-      imgSrc: coverUrl,
-      fileLink: pdfUrl,
+      language: language, // Include language in the Firestore document
+      imgSrc: coverUrl, // Cover image URL
+      fileLink: pdfUrl, // PDF file URL
     };
 
-    await addDoc(collection(db, 'Books'), newBook);
-
-    alert('Book uploaded successfully!');
+    // Add the new book to Firestore
+    await addDoc(booksCollection, newBook);
+    alert("Book uploaded successfully!");
     document.getElementById('book-upload-form').reset(); // Clear the form
   } catch (error) {
-    console.error('Error uploading files: ', error);
-    alert(`Error uploading files: ${error.message}`);
+    console.error("Error uploading files: ", error);
+    alert("Failed to upload the book. Please try again.");
   }
 });
