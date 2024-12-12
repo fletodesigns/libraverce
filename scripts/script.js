@@ -4,7 +4,11 @@ const downloadNowPage = document.getElementById("downloadNowPage");
 
 // Firebase setup
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+import {
+  getFirestore,
+  collection,
+  getDocs,
+} from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-analytics.js";
 
 // Firebase config
@@ -16,7 +20,7 @@ const firebaseConfig = {
   storageBucket: "flebooks.firebasestorage.app",
   messagingSenderId: "458785971847",
   appId: "1:458785971847:web:ed6138c7df952c9f3d6222",
-  measurementId: "G-XMD1VDPZGT"
+  measurementId: "G-XMD1VDPZGT",
 };
 
 // Initialize Firebase
@@ -35,8 +39,9 @@ function createBookCard(book) {
       <div class="details">
         <h5>${book.bookNo}</h5>
         <h2>${book.title}</h2>
-        <h3>${book.subtitle}</h3>
-        <h4>${book.authorName}</h4>
+        <h3>${book.authorName}</h3>
+        <h4>${book.language}</h4>
+        <h6>${book.subtitle}</h6>
       </div>
       <div class="actions">
         <a href="${book.fileLink}" target="_blank">
@@ -69,7 +74,7 @@ async function displayBooks(book) {
     const downloadButton = document.querySelectorAll(".download-btn");
     downloadButton.forEach((btn) => {
       btn.addEventListener("click", (e) => {
-        const downloadNowLink = document.getElementById('downloadNowLink');
+        const downloadNowLink = document.getElementById("downloadNowLink");
         const downloadLink = e.currentTarget.getAttribute("data-download-link");
 
         // Show the downloadNowPage
@@ -98,17 +103,19 @@ function searchBooks() {
 
   bookCards.forEach((card) => {
     const title = card.querySelector("h2").textContent.toLowerCase();
-    const subtitle = card.querySelector("h3").textContent.toLowerCase();
+    const subtitle = card.querySelector("h6").textContent.toLowerCase();
+    const authorName = card.querySelector("h3").textContent.toLowerCase();
+    const language = card.querySelector("h4").textContent.toLowerCase();
     const bookNo = card.querySelector("h5").textContent.toLowerCase();
-    const authorName = card.querySelector("h4").textContent.toLowerCase();
 
     if (
       title.includes(query) ||
       subtitle.includes(query) ||
       bookNo.includes(query) ||
-      authorName.includes(query)
+      authorName.includes(query) ||
+      language.includes(query)
     ) {
-      card.style.display = "block";
+      card.style.display = "flex";
     } else {
       card.style.display = "none";
     }
