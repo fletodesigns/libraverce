@@ -46,12 +46,18 @@ main {
 }
 
 .book-card h2 {
+    width: 200px;
     font-size: 20px;
     line-height: 20px;
     padding: 0px 20px 0 20px;
     font-family: "Anek Malayalam", Anek Malayalam;
     font-weight: 500;
     margin-bottom: 5px;
+
+    /* Add these properties for ellipsis */
+    white-space: nowrap;      /* Prevent text from wrapping */
+    overflow: hidden;         /* Hide the overflowing text */
+    text-overflow: ellipsis;  /* Show ellipsis for overflow */
 }
 
 .book-card h3 {
