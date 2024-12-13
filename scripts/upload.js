@@ -1,6 +1,6 @@
 // Import Firebase modules 
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js';
-import { getFirestore, collection, addDoc, doc, getDoc } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js';
+import { getFirestore, collection, setDoc, doc, getDoc } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js';
 
 // Firebase configuration
 const firebaseConfig = {
@@ -96,45 +96,87 @@ async function uploadToGitHub(file, path, fileName) {
   return customUrl;
 }
 
+// Function to sanitize document ID for Firestore
+function sanitizeFirestoreDocId(id) {
+  // Replace any invalid characters (e.g., spaces, slashes) with underscores
+  let sanitizedId = id.replace(/[^a-zA-Z0-9_-]/g, "_");
+
+  // Ensure the ID isn't empty after sanitization
+  if (!sanitizedId || /^[_]+$/.test(sanitizedId)) {
+      sanitizedId = `book_${Date.now()}`; // Fallback to a unique ID if sanitized title is invalid
+  }
+
+  // Optionally truncate the title if it's too long for Firestore (max 1,500 bytes)
+  if (sanitizedId.length > 1500) {
+      sanitizedId = sanitizedId.substring(0, 1500);
+  }
+
+  return sanitizedId;
+}
+
+// Form submission handler
 // Form submission handler
 document.getElementById('book-upload-form').addEventListener('submit', async function (e) {
   e.preventDefault(); // Prevent the form from submitting traditionally
 
   // Get values from the form
-  const bookNo = document.getElementById('bookNo').value;
-  const title = document.getElementById('title').value;
-  const subtitle = document.getElementById('subtitle').value;
-  const authorName = document.getElementById('authorName').value;
-  const language = document.getElementById('languageInput').value; // Get the selected language
+  const bookNo = document.getElementById('bookNo').value.trim();
+  const title = document.getElementById('title').value.trim();
+  const subtitle = document.getElementById('subtitle').value.trim();
+  const authorName = document.getElementById('authorName').value.trim();
+  const language = document.getElementById('languageInput').value.trim();
   const imgFile = document.getElementById('imgFile').files[0];
   const pdfFile = document.getElementById('fileInput').files[0];
 
+  if (!bookNo || !title || !authorName || !language || !imgFile || !pdfFile) {
+      alert("All fields are required. Please fill in all the details.");
+      return; // Stop if validation fails
+  }
+
   try {
-    // Upload cover image
-    const coverPath = `files/Projects/Flebooks/${language}/cover`;
-    const coverUrl = await uploadToGitHub(imgFile, coverPath, imgFile.name);
+      const sanitizedImgFileName = imgFile.name.replace(/[^a-zA-Z0-9.]/g, "_");
+      const sanitizedPdfFileName = pdfFile.name.replace(/[^a-zA-Z0-9.]/g, "_");
 
-    // Upload PDF
-    const pdfPath = `files/Projects/Flebooks/${language}/pdf`;
-    const pdfUrl = await uploadToGitHub(pdfFile, pdfPath, pdfFile.name);
+      // Upload cover image
+      const coverPath = `files/Projects/Flebooks/${language}/cover`;
+      const coverUrl = await uploadToGitHub(imgFile, coverPath, sanitizedImgFileName);
 
-    // Create a new book object
-    const newBook = {
-      bookNo: bookNo,
-      title: title,
-      subtitle: subtitle,
-      authorName: authorName,
-      language: language, // Include language in the Firestore document
-      imgSrc: coverUrl, // Cover image URL
-      fileLink: pdfUrl, // PDF file URL
-    };
+      // Upload PDF
+      const pdfPath = `files/Projects/Flebooks/${language}/pdf`;
+      const pdfUrl = await uploadToGitHub(pdfFile, pdfPath, sanitizedPdfFileName);
 
-    // Add the new book to Firestore
-    await addDoc(booksCollection, newBook);
-    alert("Book uploaded successfully!");
-    document.getElementById('book-upload-form').reset(); // Clear the form
+      // Create a new book object
+      const newBook = {
+          bookNo,
+          title,
+          subtitle,
+          authorName,
+          language,
+          imgSrc: coverUrl,
+          fileLink: pdfUrl,
+      };
+
+      // Choose document ID based on language
+      let docId;
+      if (language.toLowerCase() !== "english") {
+          // If the language is not English, use subtitle as the document ID
+          docId = sanitizeFirestoreDocId(subtitle);
+      } else {
+          // If the language is English, use title as the document ID
+          docId = sanitizeFirestoreDocId(title);
+      }
+
+      // Log the selected document ID
+      console.log("Document ID:", docId);
+
+      // Add to Firestore
+      const bookDocRef = doc(db, "Books", docId);
+      await setDoc(bookDocRef, newBook);
+
+      alert("Book uploaded successfully!");
+      document.getElementById('book-upload-form').reset();
   } catch (error) {
-    console.error("Error uploading files: ", error);
-    alert("Failed to upload the book. Please try again.");
+      console.error("Error uploading files: ", error);
+      alert("Failed to upload the book. Please try again.");
   }
 });
