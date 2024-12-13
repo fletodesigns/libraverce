@@ -23,7 +23,7 @@ main {
     background-color: var(--bg-color);
     border-radius: 15px;
     max-width: 180px;
-    box-shadow: 0 0 20px rgb(0, 0, 0, 0.3);
+    box-shadow: 0 0 50px var(--dark-shade-1);
 }
 
 .book-card:hover h3,.book-card:hover h4 {
