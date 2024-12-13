@@ -139,3 +139,10 @@ body {
 .upload-form button:active {
   transform: scale(0.9);
 }
+
+
+@media (max-width: 600px) {
+   #book-upload-form {
+    flex-direction: column;
+   } 
+}
