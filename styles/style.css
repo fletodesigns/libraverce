@@ -30,6 +30,12 @@ main {
     display: flex;
 }
 
+.book-card:hover h2 {
+    white-space: normal;      /* Allow text to wrap */
+    overflow: visible;        /* Make overflowing text visible */
+    text-overflow: unset;     /* Remove the ellipsis */
+}
+
 .book-card .details{
     display: flex;
     align-items: start;
