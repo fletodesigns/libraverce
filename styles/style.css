@@ -26,7 +26,12 @@ main {
     box-shadow: 0 0 50px var(--dark-color-1);
 }
 
-.book-card:hover h3,.book-card:hover h4 {
+.book-card:hover {
+    transform: scale(1.01);
+    box-shadow: 0 0 50px var(--dark-color-2);
+}
+
+.book-card:hover h3,.book-card:hover h4  {
     display: flex;
 }
 
@@ -34,6 +39,14 @@ main {
     white-space: normal;      /* Allow text to wrap */
     overflow: visible;        /* Make overflowing text visible */
     text-overflow: unset;     /* Remove the ellipsis */
+}
+
+.book-card:hover .cover{
+    height: fit-content;
+}
+
+.book-card:hover .cover img{
+    height: fit-content;
 }
 
 .book-card .details{
@@ -59,7 +72,7 @@ main {
     font-family: "Anek Malayalam", Anek Malayalam;
     font-weight: 500;
     margin-bottom: 5px;
-
+    
     /* Add these properties for ellipsis */
     white-space: nowrap;      /* Prevent text from wrapping */
     overflow: hidden;         /* Hide the overflowing text */
